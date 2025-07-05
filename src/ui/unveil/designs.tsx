@@ -1,7 +1,6 @@
 import {
   BRAND,
   NEON,
-  POINTER,
   POINTER_WHITE,
   UNVEIL_1,
   UNVEIL_2,

@@ -1,5 +1,4 @@
 import { BRAND, CARTOON, NEON, POINTER_WHITE } from "../../assets";
-import Button from "../../components/button";
 
 function LandingPage() {
   return (
