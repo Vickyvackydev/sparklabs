@@ -7,7 +7,6 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-import { authReducer } from "./slices/authReducer";
 import { globalReducer } from "./slices/globalReducer";
 
 const persistConfig = {
@@ -18,7 +17,7 @@ const persistConfig = {
 
 const appReducer = combineReducers({
   // all reducers here
-  auths: authReducer,
+
   globalstate: globalReducer,
 });
 

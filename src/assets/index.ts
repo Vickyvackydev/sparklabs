@@ -1,4 +1,5 @@
 export { default as IMOH } from "./images/imoh.svg";
+export { default as IMOH_FOOTER } from "./images/imoh-footer.svg";
 export { default as DARK_MODE_ICON } from "./icons/darkmode.svg";
 export { default as BLINKER } from "./images/blinker.svg";
 export { default as PICTURE_1 } from "./images/picture-1.svg";
@@ -69,3 +70,7 @@ export { default as WURLET_FRAME_11 } from "./images/wurlet-frame-11.png";
 export { default as CARTOON } from "./images/cartoon.png";
 export { default as WOMAN } from "./images/woman.svg";
 export { default as ARROW_ICON } from "./icons/arrow-icon.svg";
+export { default as SPARK_LABS_FOOTER_LOGO } from "./images/spark-footer-logo.svg";
+export { default as HOME_LAST_FRAME } from "./images/home-last-frame.png";
+export { default as LIGHT_LOGO } from "./images/light-logo.svg";
+export { default as LIGHT_MODE_FOOTER_LOGO } from "./images/light-mode-footer-logo.svg";

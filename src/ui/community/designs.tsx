@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import {
   COMMUNITY_FRAME_1,
   COMMUNITY_FRAME_2,
@@ -13,16 +14,71 @@ import {
   SCROLL_FRAME_8,
   SCROLL_FRAME_9,
 } from "../../assets";
-
+import { useSelector } from "react-redux";
+import { selectDarkMode } from "../../state/slices/globalReducer";
+import { motion } from "framer-motion";
+import { animationVariants } from "../../constant";
+const scrollVariants = {
+  left: {
+    animate: {
+      x: ["0%", "-100%"],
+      transition: {
+        x: {
+          repeat: Infinity,
+          repeatType: "loop",
+          duration: 20,
+          ease: "linear",
+        },
+      },
+    },
+  },
+  right: {
+    animate: {
+      x: ["-100%", "0%"],
+      transition: {
+        x: {
+          repeat: Infinity,
+          repeatType: "loop",
+          duration: 20,
+          ease: "linear",
+        },
+      },
+    },
+  },
+};
 function CommunityDesigns() {
+  const darkmode = useSelector(selectDarkMode);
   return (
-    <div className="flex items-center justify-center flex-col py-20">
-      <div className="pb-10 flex px-10 flex-col gap-y-5 items-start w-[700px] justify-center">
-        <span className="font-anton text-3xl text-[#262626]">
+    <motion.div
+      variants={animationVariants.container}
+      className="flex items-center justify-center flex-col py-20"
+    >
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="pb-10 flex px-10 flex-col gap-y-5 items-start w-[700px] justify-center"
+      >
+        <span
+          className={clsx(
+            "font-anton text-3xl text-[#262626]",
+            darkmode && "text-white"
+          )}
+        >
           Brand Expression:{" "}
-          <span className="text-[#5B5B5B]">From Identity to Influence</span>
+          <span
+            className={clsx("text-[#5B5B5B]", darkmode && "text-[#C3C3C3]")}
+          >
+            From Identity to Influence
+          </span>
         </span>
-        <span className="text-sm font-medium font-inter text-[#262626]">
+        <span
+          className={clsx(
+            "text-sm font-medium font-inter text-[#262626]",
+            darkmode && "text-white"
+          )}
+        >
           A great identity isn’t just seen — it’s felt. We extended the 10X
           visual language into use cases that speak to its audience: social
           banners, event branding, flyers, and merchandise concepts. Every
@@ -30,14 +86,25 @@ function CommunityDesigns() {
           purpose — whether viewed on a poster in a local hub or online in a
           WhatsApp
         </span>
-        <ul className="list-disc list-inside font-inter text-sm">
+        <ul
+          className={clsx(
+            "list-disc list-inside font-inter text-sm",
+            darkmode && "text-[#BBBBBB]"
+          )}
+        >
           <li>Community t-shirt mockups</li>
           <li>Posters, event stickers, or banners</li>
           <li>Social card templates</li>
         </ul>
-      </div>
+      </motion.div>
 
-      <div className="flex items-center justify-between gap-x-4 mt-14">
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="flex items-center px-10 justify-between gap-x-4 mt-14"
+      >
         <div className="bg-[#C8C8C875] p-5 rounded-xl flex flex-col gap-y-5">
           <img
             src={COMMUNITY_FRAME_1}
@@ -52,9 +119,15 @@ function CommunityDesigns() {
             alt=""
           />
         </div>
-      </div>
+      </motion.div>
 
-      <div className="flex items-center justify-between gap-x-4 mt-14">
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="flex items-center px-10 justify-between gap-x-4 mt-14"
+      >
         <div className="bg-[#C8C8C875] p-5 rounded-xl flex flex-col gap-y-5">
           <img
             src={COMMUNITY_FRAME_3}
@@ -69,13 +142,34 @@ function CommunityDesigns() {
             alt=""
           />
         </div>
-      </div>
-      <div className="pt-20 flex flex-col gap-y-5 items-start w-[700px] justify-center">
-        <span className="font-anton text-3xl text-[#262626]">
+      </motion.div>
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="pt-20 flex flex-col gap-y-5 items-start w-[700px] justify-center"
+      >
+        <span
+          className={clsx(
+            "font-anton text-3xl text-[#262626]",
+            darkmode && "text-white"
+          )}
+        >
           Brand Identity
         </span>
-        <span className="text-sm font-medium font-inter text-[#262626]">
-          <span className="text-[#2D2D2D] font-bold">
+        <span
+          className={clsx(
+            "text-sm font-medium font-inter text-[#262626]",
+            darkmode && "text-white"
+          )}
+        >
+          <span
+            className={clsx(
+              "text-[#2D2D2D] font-bold",
+              darkmode && "text-white"
+            )}
+          >
             {" "}
             Designing for Unity, Purpose, and Progress
           </span>{" "}
@@ -88,50 +182,69 @@ function CommunityDesigns() {
           roots of community activism with the vibrance of African youth and
           energy.C
         </span>
-        <ul className="list-disc list-inside font-inter text-sm">
+        <ul
+          className={clsx(
+            "list-disc list-inside font-inter text-sm",
+            darkmode && "text-[#BBBBBB]"
+          )}
+        >
           <li>Logo mark and construction</li>
           <li>Brand color palette (earth tones + bold accent)</li>
           <li>Typography and usage</li>
           <li>Visual elements (e.g. icons, textures, symbols)</li>
         </ul>
-      </div>
+      </motion.div>
 
-      <div className="w-full bg-[#ECECEC] p-10 mt-20 overflow-hidden">
-        <div className="flex items-center justify-between gap-x-5 animate-scroll-left scroll-hover-pause">
-          {[SCROLL_FRAME_1, SCROLL_FRAME_2, SCROLL_FRAME_3].map((frame) => (
-            <div>
-              <img
-                src={frame}
-                className="min-w-[500px] h-[300px] object-contain"
-                alt=""
-              />
-            </div>
+      <div className="w-full bg-[#ECECEC] p-10 mt-20 overflow-hidden space-y-2">
+        {/* Row 1: scroll left */}
+        <motion.div
+          className="flex gap-x-5"
+          variants={scrollVariants.left}
+          animate="animate"
+        >
+          {[SCROLL_FRAME_1, SCROLL_FRAME_2, SCROLL_FRAME_3].map((frame, i) => (
+            <img
+              key={i}
+              src={frame}
+              className="min-w-[500px] h-[300px] object-contain"
+              alt=""
+            />
           ))}
-        </div>
-        <div className="flex items-center justify-between gap-x-5 mt-2 animate-scroll-right scroll-hover-pause">
-          {[SCROLL_FRAME_4, SCROLL_FRAME_5, SCROLL_FRAME_6].map((frame) => (
-            <div>
-              <img
-                src={frame}
-                className="min-w-[500px] h-[300px] object-contain"
-                alt=""
-              />
-            </div>
+        </motion.div>
+
+        {/* Row 2: scroll right */}
+        <motion.div
+          className="flex gap-x-5"
+          variants={scrollVariants.right}
+          animate="animate"
+        >
+          {[SCROLL_FRAME_4, SCROLL_FRAME_5, SCROLL_FRAME_6].map((frame, i) => (
+            <img
+              key={i}
+              src={frame}
+              className="min-w-[500px] h-[300px] object-contain"
+              alt=""
+            />
           ))}
-        </div>
-        <div className="flex items-center justify-between gap-x-5 mt-2 animate-scroll-left scroll-hover-pause">
-          {[SCROLL_FRAME_7, SCROLL_FRAME_8, SCROLL_FRAME_9].map((frame) => (
-            <div>
-              <img
-                src={frame}
-                className="min-w-[500px] h-[300px] object-contain"
-                alt=""
-              />
-            </div>
+        </motion.div>
+
+        {/* Row 3: scroll left */}
+        <motion.div
+          className="flex gap-x-5"
+          variants={scrollVariants.left}
+          animate="animate"
+        >
+          {[SCROLL_FRAME_7, SCROLL_FRAME_8, SCROLL_FRAME_9].map((frame, i) => (
+            <img
+              key={i}
+              src={frame}
+              className="min-w-[500px] h-[300px] object-contain"
+              alt=""
+            />
           ))}
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

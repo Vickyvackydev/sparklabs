@@ -1,21 +1,43 @@
+import clsx from "clsx";
 import { BRAND, NEON, POINTER, POINTER_WHITE, WOMAN } from "../../assets";
-
+import { useSelector } from "react-redux";
+import { selectDarkMode } from "../../state/slices/globalReducer";
+import { motion } from "framer-motion";
+import { animationVariants } from "../../constant";
 function ModelHero() {
+  const darkmode = useSelector(selectDarkMode);
   return (
-    <div className="p-10 mt-11">
-      <div className="flex items-start flex-col gap-y-12">
-        <span className="text-[80px] font-anton text-custom-black leading-20">
+    <motion.div variants={animationVariants.container} className="p-10 mt-11">
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="flex items-start flex-col gap-y-12"
+      >
+        <span
+          className={clsx(
+            "text-[80px] font-anton  leading-20",
+            darkmode ? "text-custom" : "text-custom-black"
+          )}
+        >
           Models & <br /> Solutions
         </span>
 
-        <div className="flex items-center justify-between gap-x-5">
+        <motion.div
+          variants={animationVariants.fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.4 }}
+          className="flex items-center justify-between gap-x-5"
+        >
           <div className="w-full h-full ">
             <img
               src={NEON}
               className="w-full h-full object-contain rounded-t-xl"
               alt=""
             />
-            <div className="w-full p-5 bg-[#818CA3] rounded-b-xl">
+            <div className={clsx("w-full p-5 bg-[#818CA3] rounded-b-xl")}>
               <span className="text-[50px] mt-3.5 leading-14 font-anton text-[#D3E1FF]">
                 {"content".toUpperCase()} <br />
                 {"and design systems".toUpperCase()}
@@ -69,9 +91,20 @@ function ModelHero() {
               </div>
             </div>
           </div>
-        </div>
-        <div className="font-inter flex flex-col gap-y-5">
-          <span className="text-[#343434] text-3xl">
+        </motion.div>
+        <motion.div
+          variants={animationVariants.fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.4 }}
+          className="font-inter flex flex-col gap-y-5"
+        >
+          <span
+            className={clsx(
+              "text-[#343434] text-3xl",
+              darkmode && "text-custom"
+            )}
+          >
             No matter what project we are starting or which model clients are
             choosing, there will always be an underlying level of automation and
             optimization on our side or on our clients'. This is the core of
@@ -79,15 +112,20 @@ function ModelHero() {
           </span>
           <div className="flex items-start gap-x-2">
             <img src={WOMAN} className="w-[48px] h-[48px]" alt="" />
-            <div className="flex flex-col items-start text-sm">
+            <div
+              className={clsx(
+                "flex flex-col items-start text-sm",
+                darkmode ? "text-custom" : "text-custom-black"
+              )}
+            >
               <span>Alena, Managing Partner</span>
               <span>alena@gen brand.design</span>
               <span>LinkedIn</span>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 }
 

@@ -11,24 +11,53 @@ import {
   POINTER_WHITE,
   UNVEILS,
 } from "../assets";
+import { useSelector } from "react-redux";
+import { selectDarkMode } from "../state/slices/globalReducer";
+import clsx from "clsx";
+import { motion } from "framer-motion";
+import { animationVariants } from "../constant";
 
 function Work() {
   const navigate = useNavigate();
+  const darkmode = useSelector(selectDarkMode);
   return (
-    <div
+    <motion.div
+      variants={animationVariants.container}
       id="projects"
       className="w-full items-start mt-8 flex flex-col gap-y-10 px-10"
     >
-      <div className="flex flex-col gap-y-1">
-        <span className="font-semibold text-[#363636] text-3xl">
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="flex flex-col gap-y-1"
+      >
+        <span
+          className={clsx(
+            "font-semibold  text-3xl",
+            darkmode ? "text-custom" : "text-[#363636]"
+          )}
+        >
           Selected Work
         </span>
-        <span className="text-[#6B6B6B] font-medium text-lg leading-[25px]">
+        <span
+          className={clsx(
+            " font-medium text-lg leading-[25px]",
+            darkmode ? "text-custom" : "text-[#6B6B6B]"
+          )}
+        >
           Every product is designed - visually and how it works. <br /> Using it
           will leave an impression. I’m going to make sure it’s a good one.
         </span>
-      </div>
-      <div className="flex items-center justify-between gap-x-5">
+      </motion.div>
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="flex items-center justify-between gap-x-5"
+      >
         <div className="w-full h-full ">
           <img
             src={GLOBE}
@@ -86,8 +115,14 @@ function Work() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="w-full h-full flex rounded-xl -mt-5">
+      </motion.div>
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="w-full h-full flex rounded-xl -mt-5"
+      >
         <img
           src={HAND_PHONE}
           className="w-[680px] h-full object-contain rounded-tl-xl rounded-bl-xl"
@@ -127,8 +162,14 @@ function Work() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="w-full h-full flex rounded-xl -mt-5">
+      </motion.div>
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="w-full h-full flex rounded-xl -mt-5"
+      >
         <div className="w-full h-full bg-[#CDCDD1] p-5 rounded-tl-xl rounded-bl-xl">
           <div className="flex flex-col gap-y-1.5 mt-4 items-start">
             <span className="font-inter text-xs">
@@ -183,8 +224,14 @@ function Work() {
           className="w-[645px] h-full object-contain rounded-tr-xl rounded-br-xl"
           alt=""
         />
-      </div>
-      <div className="w-full h-full flex rounded-xl -mt-5">
+      </motion.div>
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="w-full h-full flex rounded-xl -mt-5"
+      >
         <img
           src={HAND_TAB}
           className="w-[645px] h-full object-contain rounded-tl-xl rounded-bl-xl"
@@ -251,8 +298,14 @@ function Work() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="w-full h-full flex rounded-xl -mt-5">
+      </motion.div>
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="w-full h-full flex rounded-xl -mt-5"
+      >
         <div className="w-full h-full bg-[#CDCDD1] p-5 rounded-tl-xl rounded-bl-xl">
           <div className="flex flex-col gap-y-1.5 mt-4 items-start">
             <span className="font-inter text-xs">
@@ -304,8 +357,8 @@ function Work() {
           className="w-[645px] h-full object-contain rounded-tr-xl rounded-br-xl"
           alt=""
         />
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 

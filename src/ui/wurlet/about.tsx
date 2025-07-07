@@ -1,12 +1,62 @@
+import { useSelector } from "react-redux";
+import { selectDarkMode } from "../../state/slices/globalReducer";
+import clsx from "clsx";
+import { motion } from "framer-motion";
+import { animationVariants } from "../../constant";
+
 function AboutWurlet() {
+  const darkmode = useSelector(selectDarkMode);
   return (
-    <div className="px-10 py-20 flex items-start justify-between">
-      <div className="flex flex-col text-[70px] w-full font-anton items-start gap-y-20">
-        <span className="text-custom-black">{new Date().getFullYear()}</span>
-      </div>
-      <div className="w-full font-inter flex flex-col gap-y-10">
-        <span className="text-sm font-normal text-[#4D4D4D] leading-[20px] font-inter">
-          <span className="text-custom-black font-bold">
+    <motion.div
+      variants={animationVariants.container}
+      className="px-10 py-20 flex items-start justify-between"
+    >
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="flex flex-col text-[70px] w-full font-anton items-start gap-y-20"
+      >
+        <span
+          className={clsx("", darkmode ? "text-white" : "text-custom-black")}
+        >
+          WURLET
+        </span>
+        <span className={clsx("text-[#949494]", darkmode && "text-custom")}>
+          {new Date().getFullYear()}
+        </span>
+      </motion.div>
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="w-full font-inter flex flex-col gap-y-10"
+      >
+        <div
+          className={clsx(
+            "flex flex-col",
+            darkmode ? "text-white" : "text-custom-black"
+          )}
+        >
+          <span> Expertise</span>
+          <span>Design, Strategy & Web</span>
+          <span>Credits</span>
+          <span className="underline">IAS - Branding & Direction</span>
+        </div>
+        <span
+          className={clsx(
+            "text-sm font-normal  leading-[20px] font-inter",
+            darkmode ? "text-white" : "text-[#4D4D4D]"
+          )}
+        >
+          <span
+            className={clsx(
+              "text-custom-black font-bold",
+              darkmode && "text-white"
+            )}
+          >
             {" "}
             Defining Identity in the Digital Age
           </span>{" "}
@@ -19,8 +69,8 @@ function AboutWurlet() {
           empowered identity sharing, beginning with a detailed brand style
           guide and extending to practical brand collaterals.
         </span>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 

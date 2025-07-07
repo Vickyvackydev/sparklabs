@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import {
   BRAND,
   NEON,
@@ -15,16 +16,98 @@ import {
   WURLET_FRAME_8,
   WURLET_FRAME_9,
 } from "../../assets";
+import { selectDarkMode } from "../../state/slices/globalReducer";
+import clsx from "clsx";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { useRef } from "react";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+const gridStagger = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemFadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+const sectionFadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+const cardsStagger = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.2,
+    },
+  },
+};
 
 function WurletDesigns() {
+  const darkmode = useSelector(selectDarkMode);
+  const zoomRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: zoomRef,
+    offset: ["start end", "end start"],
+  });
+  const zoomScale = useSpring(useTransform(scrollYProgress, [0, 1], [1, 1.1]), {
+    stiffness: 100,
+    damping: 20,
+  });
   return (
     <div className="flex items-center justify-center flex-col">
-      <div className="py-16 flex flex-col gap-y-5 items-center w-[700px] justify-center">
-        <span className="font-anton text-4xl text-[#4A4A4A]  text-center leading-12">
+      <motion.div
+        className="py-16 flex flex-col gap-y-5 items-center w-[700px] justify-center"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <span
+          className={clsx(
+            "font-anton text-4xl  text-center leading-12",
+            darkmode ? "text-white" : "text-[#4A4A4A] "
+          )}
+        >
           Brand Strategy & Design Philosophy: <br />{" "}
-          <span className="text-[#262626]"> Control, Clarity, Confidence</span>
+          <span
+            className={clsx("text-[#262626]", darkmode && "text-[#BBBBBB]")}
+          >
+            {" "}
+            Control, Clarity, Confidence
+          </span>
         </span>
-        <span className="text-sm font-medium font-inter text-[#808080]">
+        <span
+          className={clsx(
+            "text-sm font-medium font-inter text-[#808080]",
+            darkmode && "text-white"
+          )}
+        >
           A great identity isn’t just seen — it’s felt. We extended the 10X
           visual language into use cases that speak to its audience: social
           banners, event branding, flyers, and merchandise concepts. Every
@@ -32,8 +115,14 @@ function WurletDesigns() {
           purpose — whether viewed on a poster in a local hub or online in a
           WhatsApp
         </span>
-      </div>
-      <div className="mt-10 grid grid-cols-2 gap-3.5 w-full p-10">
+      </motion.div>
+      <motion.div
+        className="mt-10 grid grid-cols-2 gap-3.5 w-full p-10"
+        variants={gridStagger}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         {[
           WURLET_FRAME_1,
           WURLET_FRAME_2,
@@ -41,50 +130,117 @@ function WurletDesigns() {
           WURLET_FRAME_4,
           WURLET_FRAME_5,
           WURLET_FRAME_6,
-        ].map((item) => (
-          <div className="w-full h-full">
-            <img src={item} className="w-full h-full object-contain" alt="" />
-          </div>
+        ].map((item, index) => (
+          <motion.div
+            key={index}
+            className="w-full h-full overflow-hidden rounded-xl"
+            variants={itemFadeUp}
+            whileHover={{ scale: 1.03 }}
+            transition={{ type: "spring", stiffness: 200 }}
+          >
+            <img
+              src={item}
+              className="w-full h-full object-contain transition-transform duration-300"
+              alt=""
+            />
+          </motion.div>
         ))}
-      </div>
-      <div className="py-16 flex flex-col gap-y-5 items-center w-[650px] justify-center">
-        <span className="font-anton text-3xl text-[#262626]  text-center leading-12">
+      </motion.div>
+
+      <motion.div
+        className="py-16 flex flex-col gap-y-5 items-center w-[650px] justify-center"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <span
+          className={clsx(
+            "font-anton text-3xl text-[#262626]  text-center leading-12",
+            darkmode && "text-white"
+          )}
+        >
           Style Guide:{" "}
-          <span className=" text-[#4A4A4A]">A Scalable, Consistent System</span>
+          <span
+            className={clsx(" text-[#4A4A4A]", darkmode && "text-[#BBBBBB]")}
+          >
+            A Scalable, Consistent System
+          </span>
         </span>
-        <span className="text-sm font-medium font-inter text-[#808080]">
+        <span
+          className={clsx(
+            "text-sm font-medium font-inter text-[#808080]",
+            darkmode && "text-white"
+          )}
+        >
           We delivered a comprehensive brand style guide that covered every
           aspect of the Wurlet visual identity — from logo usage and grid
           systems to type hierarchy, motion guidelines, and accessibility
           standards. The guide serves as a single source of truth, ensuring
           design consistency across teams, platforms, and future campaigns.
         </span>
-      </div>
-      <div className="w-full h-full p-10">
-        <img
+      </motion.div>
+      <div className="w-full h-full p-10" ref={zoomRef}>
+        <motion.img
           src={WURLET_FRAME_7}
-          className="w-full h-full object-contain "
+          className="w-full h-full object-contain"
+          style={{ scale: zoomScale }}
           alt=""
         />
-        <div className="grid grid-cols-2 gap-3.5 w-full mt-5">
+
+        <motion.div
+          className="grid grid-cols-2 gap-3.5 w-full mt-5"
+          variants={gridStagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           {[
             WURLET_FRAME_8,
             WURLET_FRAME_9,
             WURLET_FRAME_10,
             WURLET_FRAME_11,
-          ].map((item) => (
-            <div className="w-full h-full">
+          ].map((item, i) => (
+            <motion.div
+              key={i}
+              className="w-full h-full overflow-hidden rounded-xl"
+              variants={itemFadeUp}
+              whileHover={{ scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 200 }}
+            >
               <img src={item} className="w-full h-full object-contain" alt="" />
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-      <div className="mt-20 p-10">
-        <span className="font-inter text-[#282828] text-[70px]">
+
+      <motion.div
+        className="mt-20 p-10"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={cardsStagger}
+      >
+        {/* Heading */}
+        <motion.span
+          variants={sectionFadeUp}
+          className={clsx(
+            "font-inter text-[#282828] text-[70px]",
+            darkmode && "text-custom"
+          )}
+        >
           Check out more projects
-        </span>
-        <div className="flex items-center justify-between gap-x-5">
-          <div className="w-full h-full ">
+        </motion.span>
+
+        {/* Cards */}
+        <div className="flex items-center justify-between gap-x-5 mt-10">
+          {/* First Card */}
+          <motion.div
+            variants={sectionFadeUp}
+            whileHover={{ scale: 1.03 }}
+            transition={{ type: "spring", stiffness: 180 }}
+            className="w-full h-full rounded-xl overflow-hidden"
+          >
             <img
               src={NEON}
               className="w-full h-full object-contain rounded-t-xl"
@@ -111,15 +267,22 @@ function WurletDesigns() {
                 </button>
               </div>
             </div>
-          </div>
-          <div className="w-full h-full scale-[98%]">
+          </motion.div>
+
+          {/* Second Card */}
+          <motion.div
+            variants={sectionFadeUp}
+            whileHover={{ scale: 1.03 }}
+            transition={{ type: "spring", stiffness: 180 }}
+            className="w-full h-full rounded-xl overflow-hidden"
+          >
             <img
               src={BRAND}
               className="w-[600px] h-full object-contain rounded-t-xl"
               alt=""
             />
             <div className="w-full p-5 bg-[#0042E5] rounded-b-xl">
-              <span className="text-[80px]  font-anton leading-20 text-[#D3E1FF]">
+              <span className="text-[80px] font-anton leading-20 text-[#D3E1FF]">
                 {"Brand".toUpperCase()} <br />
                 {"systems".toUpperCase()}
               </span>
@@ -143,9 +306,9 @@ function WurletDesigns() {
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

@@ -1,12 +1,61 @@
+import clsx from "clsx";
 import { BRAND, CARTOON, NEON, POINTER_WHITE } from "../../assets";
+import { useSelector } from "react-redux";
+import { selectDarkMode } from "../../state/slices/globalReducer";
+import { motion } from "framer-motion";
+import { animationVariants } from "../../constant";
+const sectionFadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
 
+const cardsStagger = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.2,
+    },
+  },
+};
 function LandingPage() {
+  const darkmode = useSelector(selectDarkMode);
   return (
-    <div className="flex items-center justify-center flex-col px-10">
-      <div className="pb-10 flex px-10 flex-col gap-y-5 items-center w-[800px] justify-center">
-        <span className="font-anton text-3xl text-[#262626]">Landing Page</span>
-        <span className="text-sm font-medium font-inter text-[#262626]">
-          <span className="font-bold text-custom-black">
+    <motion.div
+      variants={animationVariants.container}
+      className="flex items-center justify-center flex-col px-10"
+    >
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="pb-10 flex px-10 flex-col gap-y-5 items-center w-[800px] justify-center"
+      >
+        <span
+          className={clsx(
+            "font-anton text-3xl text-[#262626]",
+            darkmode && "text-white"
+          )}
+        >
+          Landing Page
+        </span>
+        <span
+          className={clsx(
+            "text-sm font-medium font-inter text-[#262626]",
+            darkmode && "text-white"
+          )}
+        >
+          <span
+            className={clsx(
+              "font-bold text-custom-black",
+              darkmode && "text-white"
+            )}
+          >
             {" "}
             Telling the Story in a Single Scroll
           </span>{" "}
@@ -18,32 +67,44 @@ function LandingPage() {
           the image below captures the tone and hierarchy that guides users from
           curiosity to connection.
         </span>
-      </div>
-      {/* <div className="w-full bg-[#FAE355] h-full flex items-start justify-between">
-        <div className="flex flex-col gap-y-5 font-inter">
-          <span>Submit opportunities the would make a difference</span>
-          <span>
-            Get started quickly. Rebuild a brighter society. Change lives
-            forever.
-          </span>
-          <Button
-            title={"View website"}
-            handleClick={() => {}}
-            btnStyles={"bg-black w-fit rounded px-5 py-3"}
-            textStyle={"text-white font-medium font-inter"}
-          />
-        </div>
-        <img src={CARTOON} alt="" />
-      </div> */}
-      <div className="w-full h-full">
+      </motion.div>
+
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="w-full h-full"
+      >
         <img src={CARTOON} className="w-full h-full object-contain" alt="" />
-      </div>
-      <div className="mt-20">
-        <span className="font-inter text-[#282828] text-[70px]">
+      </motion.div>
+      <motion.div
+        className="mt-20 p-10"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={cardsStagger}
+      >
+        {/* Heading */}
+        <motion.span
+          variants={sectionFadeUp}
+          className={clsx(
+            "font-inter text-[#282828] text-[70px]",
+            darkmode && "text-custom"
+          )}
+        >
           Check out more projects
-        </span>
-        <div className="flex items-center justify-between gap-x-5">
-          <div className="w-full h-full ">
+        </motion.span>
+
+        {/* Cards */}
+        <div className="flex items-center justify-between gap-x-5 mt-10">
+          {/* First Card */}
+          <motion.div
+            variants={sectionFadeUp}
+            whileHover={{ scale: 1.03 }}
+            transition={{ type: "spring", stiffness: 180 }}
+            className="w-full h-full rounded-xl overflow-hidden"
+          >
             <img
               src={NEON}
               className="w-full h-full object-contain rounded-t-xl"
@@ -74,15 +135,22 @@ function LandingPage() {
                 </button>
               </div>
             </div>
-          </div>
-          <div className="w-full h-full scale-[98%]">
+          </motion.div>
+
+          {/* Second Card */}
+          <motion.div
+            variants={sectionFadeUp}
+            whileHover={{ scale: 1.03 }}
+            transition={{ type: "spring", stiffness: 180 }}
+            className="w-full h-full rounded-xl overflow-hidden"
+          >
             <img
               src={BRAND}
               className="w-[600px] h-full object-contain rounded-t-xl"
               alt=""
             />
             <div className="w-full p-5 bg-[#0042E5] rounded-b-xl">
-              <span className="text-[80px]  font-anton leading-20 text-[#D3E1FF]">
+              <span className="text-[80px] font-anton leading-20 text-[#D3E1FF]">
                 {"Brand".toUpperCase()} <br />
                 {"systems".toUpperCase()}
               </span>
@@ -106,10 +174,10 @@ function LandingPage() {
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 

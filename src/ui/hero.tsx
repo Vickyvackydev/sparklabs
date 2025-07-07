@@ -1,35 +1,103 @@
+import { useSelector } from "react-redux";
 import {
   BLINKER,
   CROSS_BORDER_WHITE_MODE,
   PICTURE_1,
   PICTURE_2,
   POINTER,
+  POINTER_WHITE,
 } from "../assets";
+import { selectDarkMode } from "../state/slices/globalReducer";
+import clsx from "clsx";
+import { motion } from "framer-motion";
+import { animationVariants } from "../constant";
 
 function Hero() {
+  const darkmode = useSelector(selectDarkMode);
+
   return (
-    <div className="w-full flex items-start flex-col gap-y-3 mt-10 px-10">
-      <div className="w-fit px-3 py-2 rounded-full flex items-center gap-x-2.5 border-2 border-[#48484826]">
-        <img src={BLINKER} className="w-[20px] h-[20px]" alt="" />
-        <span className="text-[#1B1B1B] text-lg font-normal">
-          Available for work
-        </span>
-      </div>
-      <div className="flex  flex-col text-[80px] leading-[90px] ">
-        <span className="font-anton text-anton-gray">
+    <motion.div
+      variants={animationVariants.container}
+      initial="hidden"
+      animate="show"
+      className={clsx(
+        "w-full flex items-start flex-col gap-y-3 transition-colors duration-500 mt-10 px-10"
+      )}
+    >
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+      >
+        <div
+          className={clsx(
+            "w-fit px-3 py-2 rounded-full flex items-center gap-x-2.5 border-2 border-[#48484826]",
+            darkmode && "border-[#FFFFFF26]"
+          )}
+        >
+          <img
+            src={BLINKER}
+            className="w-[20px] h-[20px] animate-pulse"
+            alt=""
+          />
+          <span
+            className={clsx(
+              "text-[#1B1B1B] text-lg font-normal",
+              darkmode && "text-white"
+            )}
+          >
+            Available for work
+          </span>
+        </div>
+      </motion.div>
+
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="flex  flex-col text-[80px] leading-[90px] "
+      >
+        <span
+          className={clsx(
+            "font-anton text-anton-gray ",
+            darkmode && "text-custom"
+          )}
+        >
           {"Imagine. Create. Dominate.".toUpperCase()}{" "}
         </span>
-        <span className="font-anton">
+        <span className={clsx("font-anton", darkmode && "text-custom")}>
           {"Pioneering Digital product For Ambitious brands".toUpperCase()}
         </span>
-      </div>
-      <span className="text-xl font-medium text-inter-gray">
+      </motion.div>
+      <motion.span
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className={clsx(
+          "text-xl font-medium ",
+          darkmode ? "text-custom" : "text-inter-gray"
+        )}
+      >
         Transforming industries with innovative tech: Web3 integration, Web2
         optimization, <br /> bespoke design, and scalable platform development.
-      </span>
+      </motion.span>
 
-      <div className="flex items-center  gap-x-2.5 mt-32 w-full justify-between">
-        <div className="w-full flex items-center justify-between border border-[#1212125E] rounded-xl px-3 py-1">
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="flex items-center  gap-x-2.5 mt-32 w-full justify-between"
+      >
+        <div
+          className={clsx(
+            "w-full flex items-center justify-between border rounded-xl px-3 py-1",
+            darkmode ? "border-[#C8D3CC29]" : "border-[#1212125E] "
+          )}
+        >
           <div className="flex items-start gap-x-2">
             <img
               src={PICTURE_1}
@@ -47,10 +115,19 @@ function Hero() {
             </div>
           </div>
           <button className="">
-            <img src={POINTER} className="w-[20px] h-[20px]" alt="" />
+            {darkmode ? (
+              <img src={POINTER_WHITE} className="w-[20px] h-[20px]" alt="" />
+            ) : (
+              <img src={POINTER} className="w-[20px] h-[20px]" alt="" />
+            )}
           </button>
         </div>
-        <div className="w-full flex items-center justify-between border border-[#1212125E] rounded-xl px-3 py-1">
+        <div
+          className={clsx(
+            "w-full flex items-center justify-between border rounded-xl px-3 py-1",
+            darkmode ? "border-[#C8D3CC29]" : "border-[#1212125E] "
+          )}
+        >
           <div className="flex items-start gap-x-2">
             <img
               src={PICTURE_2}
@@ -67,11 +144,21 @@ function Hero() {
             </div>
           </div>
           <button className="">
-            <img src={POINTER} className="w-[20px] h-[20px]" alt="" />
+            {darkmode ? (
+              <img src={POINTER_WHITE} className="w-[20px] h-[20px]" alt="" />
+            ) : (
+              <img src={POINTER} className="w-[20px] h-[20px]" alt="" />
+            )}
           </button>
         </div>
-      </div>
-      <div className="w-full flex items-center justify-between gap-x-5 mt-5 relative">
+      </motion.div>
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="w-full flex items-center justify-between gap-x-5 mt-5 relative"
+      >
         <div className="w-full bg-[#F6FA5E] p-5 rounded-xl flex flex-col gap-y-5">
           <span className="text-[92px] font-anton leading-[90px] text-custom-black">
             CONTENT AND DESIGN <br /> SYSTEMS
@@ -121,12 +208,16 @@ function Hero() {
               </div>
             </div>
             <button className="">
-              <img src={POINTER} className="w-[20px] h-[20px]" alt="" />
+              {darkmode ? (
+                <img src={POINTER_WHITE} className="w-[20px] h-[20px]" alt="" />
+              ) : (
+                <img src={POINTER} className="w-[20px] h-[20px]" alt="" />
+              )}
             </button>
           </div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 

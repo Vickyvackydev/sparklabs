@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import {
   BRAND,
   NEON,
@@ -12,60 +13,134 @@ import {
   UNVEIL_8,
   UNVEIL_9,
 } from "../../assets";
-
+import { useSelector } from "react-redux";
+import { selectDarkMode } from "../../state/slices/globalReducer";
+import { motion } from "framer-motion";
+import { animationVariants } from "../../constant";
 function UnveilDesigns() {
+  const darkmode = useSelector(selectDarkMode);
   return (
-    <div className="flex items-center justify-center flex-col py-20 px-10">
-      <div className="pb-10 flex flex-col gap-y-5 items-start w-[600px] justify-center">
-        <span className="font-anton text-5xl text-[#262626]">
-          Brand Applications
+    <motion.div
+      variants={animationVariants.container}
+      className="flex items-center justify-center flex-col py-20 px-10"
+    >
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="pb-10 flex flex-col gap-y-5 items-start w-[600px] justify-center"
+      >
+        <span
+          className={clsx(
+            "font-anton text-5xl ",
+            darkmode ? "text-white" : "text-[#262626]"
+          )}
+        >
+          Brand{" "}
+          <span
+            className={clsx("", darkmode ? "text-[#C3C3C3]" : "text-[#262626]")}
+          >
+            {" "}
+            Applications
+          </span>{" "}
         </span>
-        <span className="text-sm font-medium font-inter text-[#262626]">
+        <span
+          className={clsx(
+            "text-sm font-medium font-inter text-[#262626]",
+            darkmode && "text-white"
+          )}
+        >
           Once the brand identity was established, we applied it across a
           variety of touchpoints — from startup pitch decks and investor
           one-pagers to social launch graphics. Each expression was built to
           feel unmistakably “Unveils”: energetic, clean, and instantly
           recognizable.
         </span>
-        <ul className="list-disc list-inside font-inter text-sm">
+        <ul
+          className={clsx(
+            "list-disc list-inside font-inter text-sm",
+            darkmode && "text-[#BBBBBB]"
+          )}
+        >
           <li>Launch teaser graphics</li>
           <li>Branded documents or decks</li>
           <li>Social banners or announcement posts</li>
         </ul>
-      </div>
+      </motion.div>
 
-      <div className="flex items-center justify-between gap-x-4 mt-14">
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="flex items-center justify-between gap-x-4 mt-14"
+      >
         <div className="bg-[#C8C8C875] p-5 rounded-xl flex flex-col gap-y-5">
           <img src={UNVEIL_1} className="w-full h-full object-contain" alt="" />
         </div>
         <div className="bg-[#C8C8C875] p-5 rounded-xl flex flex-col gap-y-5">
           <img src={UNVEIL_2} className="w-full h-full object-contain" alt="" />
         </div>
-      </div>
-      <div className="flex items-center justify-between gap-x-4 mt-14">
+      </motion.div>
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="flex items-center justify-between gap-x-4 mt-14"
+      >
         <div className="bg-[#C8C8C875] p-5 rounded-xl flex flex-col gap-y-5">
           <img src={UNVEIL_3} className="w-full h-full object-contain" alt="" />
         </div>
         <div className="bg-[#C8C8C875] p-5 rounded-xl flex flex-col gap-y-5">
           <img src={UNVEIL_4} className="w-full h-full object-contain" alt="" />
         </div>
-      </div>
-      <div className="flex items-center justify-between gap-x-4 mt-14">
+      </motion.div>
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="flex items-center justify-between gap-x-4 mt-14"
+      >
         <div className="bg-[#C8C8C875] p-5 rounded-xl flex flex-col gap-y-5">
           <img src={UNVEIL_5} className="w-full h-full object-contain" alt="" />
         </div>
         <div className="bg-[#C8C8C875] p-5 rounded-xl flex flex-col gap-y-5">
           <img src={UNVEIL_6} className="w-full h-full object-contain" alt="" />
         </div>
-      </div>
-      <div className="bg-[#C8C8C875] p-5 w-full h-full rounded-xl">
+      </motion.div>
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="bg-[#C8C8C875] p-5 w-full h-full rounded-xl"
+      >
         <img src={UNVEIL_7} className="w-full h-full object-contain" alt="" />
-      </div>
-      <div className="py-16 flex flex-col gap-y-5 items-start w-[600px] justify-center">
-        <span className="font-anton text-5xl text-[#262626]">
+      </motion.div>
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="py-16 flex flex-col gap-y-5 items-start w-[600px] justify-center"
+      >
+        <span
+          className={clsx(
+            "font-anton text-5xl text-[#262626]",
+            darkmode && "text-white"
+          )}
+        >
           Mobile App <span className="text-[#C3C3C3]"> (In Progress)</span>
         </span>
-        <span className="text-sm font-medium font-inter text-[#808080]">
+        <span
+          className={clsx(
+            "text-sm font-medium font-inter text-[#808080]",
+            darkmode && "text-white"
+          )}
+        >
           With branding complete, we’re now building the mobile experience of
           Unveils — a fintech app that strips away complexity while offering
           powerful financial tools under the hood. Our focus is on user flow
@@ -73,21 +148,41 @@ function UnveilDesigns() {
           development, the mobile screens reflect Unveils’ core belief:
           financial power should feel effortless.
         </span>
-        <ul className="list-disc list-inside font-inter text-sm">
+        <ul
+          className={clsx(
+            "list-disc list-inside font-inter text-sm",
+            darkmode && "text-[#BBBBBB]"
+          )}
+        >
           <li>Selected screen previews (even low/mid-fidelity if necessary)</li>
           <li>Focus on key flows: onboarding, wallet setup, transactions</li>
           <li>UI design patterns (bottom nav, cards, charts)</li>
         </ul>
-      </div>
-      <div className="flex items-center justify-between gap-x-4 mt-14">
+      </motion.div>
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="flex items-center justify-between gap-x-4 mt-14"
+      >
         <div className="bg-[#C8C8C875] p-5 rounded-xl flex flex-col gap-y-5">
           <img src={UNVEIL_9} className="w-full h-full object-contain" alt="" />
         </div>
         <div className="bg-[#C8C8C875] p-5 rounded-xl flex flex-col gap-y-5">
           <img src={UNVEIL_8} className="w-full h-full object-contain" alt="" />
         </div>
-      </div>
-      <div className="py-16 font-inter text-[16px] text-[#292929] font-normal">
+      </motion.div>
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className={clsx(
+          "py-16 font-inter text-[16px] text-[#292929] font-normal",
+          darkmode && "text-white"
+        )}
+      >
         <span>
           Unveils is still unveiling — and we're proud to be part of its journey
           from day zero. The brand now has a strong visual foundation, and the
@@ -95,9 +190,19 @@ function UnveilDesigns() {
           continuously iterating on feedback and pushing for simplicity without
           compromise. This is fintech — unmasked.
         </span>
-      </div>
-      <div>
-        <span className="font-inter text-[#282828] text-[70px]">
+      </motion.div>
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+      >
+        <span
+          className={clsx(
+            "font-inter text-[#282828] text-[70px]",
+            darkmode && "text-custom"
+          )}
+        >
           Check out more projects
         </span>
         <div className="flex items-center justify-between gap-x-5">
@@ -166,8 +271,8 @@ function UnveilDesigns() {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 

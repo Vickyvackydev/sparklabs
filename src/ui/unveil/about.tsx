@@ -1,18 +1,54 @@
+import { useSelector } from "react-redux";
+import { selectDarkMode } from "../../state/slices/globalReducer";
+import clsx from "clsx";
+import { motion } from "framer-motion";
+import { animationVariants } from "../../constant";
+
 function AboutUnveil() {
+  const darkmode = useSelector(selectDarkMode);
   return (
-    <div className="px-10 py-20 flex items-start justify-between">
-      <div className="flex flex-col text-[70px] w-full font-anton items-start gap-y-20">
-        <span className="text-custom-black">Unveil Finance</span>
-        <span className="text-[#949494]">{new Date().getFullYear()}</span>
-      </div>
-      <div className="w-full font-inter flex flex-col gap-y-10">
-        <div className="flex flex-col">
+    <motion.div
+      variants={animationVariants.container}
+      className="px-10 py-20 flex items-start justify-between"
+    >
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="flex flex-col text-[70px] w-full font-anton items-start gap-y-20"
+      >
+        <span className={clsx("text-custom-black", darkmode && "text-white")}>
+          Unveil Finance
+        </span>
+        <span className={clsx("text-[#949494]", darkmode && "text-custom")}>
+          {new Date().getFullYear()}
+        </span>
+      </motion.div>
+      <motion.div
+        variants={animationVariants.fadeInUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="w-full font-inter flex flex-col gap-y-10"
+      >
+        <div
+          className={clsx(
+            "flex flex-col",
+            darkmode ? "text-white" : "text-custom-black"
+          )}
+        >
           <span> Expertise</span>
           <span>Design, Strategy & Web</span>
           <span>Credits</span>
           <span className="underline">IAS - Branding & Direction</span>
         </div>
-        <span className="text-sm font-normal text-[#4D4D4D] leading-[20px] font-inter">
+        <span
+          className={clsx(
+            "text-sm font-normal text-[#4D4D4D] leading-[20px] font-inter",
+            darkmode && "text-white"
+          )}
+        >
           Unveils is a fintech brand on a mission to make financial tools more
           transparent, accessible, and intuitive. As their design partner, we
           led the creation of a distinct, confident brand identity and are
@@ -38,8 +74,8 @@ function AboutUnveil() {
             <li>Mockups on cards, signage, mobile headers</li>
           </ul>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 

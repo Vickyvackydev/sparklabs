@@ -10,6 +10,7 @@ import Models from "./pages/models";
 import Contact from "./pages/contact";
 import { useEffect } from "react";
 import lenis from "./utils";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
   const location = useLocation();
@@ -17,19 +18,19 @@ function App() {
 
   useEffect(() => {
     if (pathname === "/") {
-      document.title = "Imoh | Home";
+      document.title = "Spark Labs | Home";
     } else if (pathname === "/metta") {
-      document.title = "Imoh | Metta";
+      document.title = "Spark Labs | Metta";
     } else if (pathname === "/unveil") {
-      document.title = "Imoh | Unveil";
+      document.title = "Spark Labs | Unveil";
     } else if (pathname === "/10x-community") {
-      document.title = "Imoh | 10x Community";
+      document.title = "Spark Labs | 10x Community";
     } else if (pathname === "/wurlet") {
-      document.title = "Imoh | Wurlet";
+      document.title = "Spark Labs | Wurlet";
     } else if (pathname === "/models") {
-      document.title = "Imoh | Models";
+      document.title = "Spark Labs | Models";
     } else if (pathname === "/contact") {
-      document.title = "Imoh | Contact";
+      document.title = "Spark Labs | Contact";
     }
   }, [pathname]);
   // useEffect(() => {
@@ -43,17 +44,19 @@ function App() {
     });
   }, [location.pathname]);
   return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/metta" element={<Metta />} />
-        <Route path="/unveil" element={<Unveil />} />
-        <Route path="/10x-community" element={<Community />} />
-        <Route path="/wurlet" element={<Wurlet />} />
-        <Route path="/models" element={<Models />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-    </Layout>
+    <AnimatePresence mode="wait">
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/metta" element={<Metta />} />
+          <Route path="/unveil" element={<Unveil />} />
+          <Route path="/10x-community" element={<Community />} />
+          <Route path="/wurlet" element={<Wurlet />} />
+          <Route path="/models" element={<Models />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </Layout>
+    </AnimatePresence>
   );
 }
 

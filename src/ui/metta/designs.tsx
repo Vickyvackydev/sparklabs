@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import {
   FRAME_3,
   FRAME_4,
@@ -8,16 +9,40 @@ import {
   FRAME_9,
   LAST_FRAME,
 } from "../../assets";
+import { selectDarkMode } from "../../state/slices/globalReducer";
+import clsx from "clsx";
+import { motion } from "framer-motion";
+import { animationVariants } from "../../constant";
 
 function Designs() {
+  const darkmode = useSelector(selectDarkMode);
   return (
     <>
-      <div className="flex items-center justify-center flex-col py-20 px-10">
-        <div className="pb-10 flex flex-col gap-y-5 items-start w-[600px] justify-center">
-          <span className="font-anton text-5xl text-[#262626]">
+      <motion.div
+        variants={animationVariants.container}
+        className="flex items-center justify-center flex-col py-20 px-10"
+      >
+        <motion.div
+          variants={animationVariants.fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.4 }}
+          className="pb-10 flex flex-col gap-y-5 items-start w-[600px] justify-center"
+        >
+          <span
+            className={clsx(
+              "font-anton text-5xl ",
+              darkmode ? "text-white" : "text-[#262626]"
+            )}
+          >
             Outdoor Banner Design
           </span>
-          <span className="text-sm font-medium font-inter text-[#262626]">
+          <span
+            className={clsx(
+              "text-sm font-medium font-inter",
+              darkmode ? "text-custom" : "text-[#262626]"
+            )}
+          >
             As Metta prepared for launch at key fintech and blockchain events,
             we designed outdoor and conference banners that made an instant
             impression. We kept the copy short and the visuals bold — focusing
@@ -26,18 +51,35 @@ function Designs() {
             grids, and crisp CTAs that mirrored the digital identity while
             standing out in physical space.
           </span>
-          <ul className="list-disc list-inside font-inter text-sm">
+          <ul
+            className={clsx(
+              "list-disc list-inside font-inter text-sm",
+              darkmode ? "text-[#BBBBBB]" : "text-[#262626]"
+            )}
+          >
             <li>Mockups of banners in urban environments or expo booths</li>
             <li>
               Rationale for layout hierarchy (logo, slogan, CTA placement)
             </li>
           </ul>
-        </div>
+        </motion.div>
 
-        <div className="w-full">
+        <motion.div
+          variants={animationVariants.fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.4 }}
+          className="w-full"
+        >
           <img src={FRAME_3} className="w-full h-full object-contain" alt="" />
-        </div>
-        <div className="flex items-center justify-between gap-x-4 mt-14">
+        </motion.div>
+        <motion.div
+          variants={animationVariants.fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.4 }}
+          className="flex items-center justify-between gap-x-4 mt-14"
+        >
           <div className="bg-[#C8C8C875] p-10 rounded-xl">
             <img
               src={FRAME_4}
@@ -63,8 +105,14 @@ function Designs() {
               <li>Event cards, wallet cards, onboarding email design</li>
             </ul>
           </div>
-        </div>
-        <div className="flex items-center justify-between gap-x-4 mt-14">
+        </motion.div>
+        <motion.div
+          variants={animationVariants.fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.4 }}
+          className="flex items-center justify-between gap-x-4 mt-14"
+        >
           <div className="bg-[#C8C8C875] p-10 rounded-xl flex flex-col gap-y-5">
             <span className="text-[16px] font-semibold text-[#8D8D8D]">
               X Design{" "}
@@ -85,12 +133,28 @@ function Designs() {
               alt=""
             />
           </div>
-        </div>
-        <div className="py-16 flex flex-col gap-y-5 items-start w-[600px] justify-center">
-          <span className="font-anton text-5xl text-[#262626]">
+        </motion.div>
+        <motion.div
+          variants={animationVariants.fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.4 }}
+          className="py-16 flex flex-col gap-y-5 items-start w-[600px] justify-center"
+        >
+          <span
+            className={clsx(
+              "font-anton text-5xl ",
+              darkmode ? "text-white" : "text-[#262626]"
+            )}
+          >
             Dashboard Design
           </span>
-          <span className="text-sm font-medium font-inter text-[#262626]">
+          <span
+            className={clsx(
+              "text-sm font-medium font-inter",
+              darkmode ? "text-custom" : "text-[#262626]"
+            )}
+          >
             The dashboard is where Metta truly comes to life. Designed with the
             high-frequency trader, casual investor, and Web3-native in mind, it
             supports wallet integration, token swap actions, portfolio insights,
@@ -99,14 +163,25 @@ function Designs() {
             panes, semantic color-coding, and subtle motion to create a sense of
             flow while maintaining accuracy. space.
           </span>
-          <ul className="list-disc list-inside font-inter text-sm">
+          <ul
+            className={clsx(
+              "list-disc list-inside font-inter text-sm",
+              darkmode ? "text-[#BBBBBB]" : "text-[#262626]"
+            )}
+          >
             <li>Mockups of banners in urban environments or expo booths</li>
             <li>
               Rationale for layout hierarchy (logo, slogan, CTA placement)
             </li>
           </ul>
-        </div>
-        <div className="flex items-center justify-between gap-x-4 mt-14">
+        </motion.div>
+        <motion.div
+          variants={animationVariants.fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.4 }}
+          className="flex items-center justify-between gap-x-4 mt-14"
+        >
           <div className="bg-[#C8C8C875] p-10 rounded-xl flex flex-col gap-y-5">
             <span className="text-[16px] font-semibold text-[#8D8D8D]">
               Option 1 Landing Page
@@ -127,8 +202,14 @@ function Designs() {
               alt=""
             />
           </div>
-        </div>
-        <div className="flex items-center justify-between gap-x-4 mt-14">
+        </motion.div>
+        <motion.div
+          variants={animationVariants.fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.4 }}
+          className="flex items-center justify-between gap-x-4 mt-14"
+        >
           <div className="bg-[#C8C8C875] p-10 rounded-xl flex flex-col gap-y-5">
             <img
               src={FRAME_9}
@@ -143,10 +224,15 @@ function Designs() {
               alt=""
             />
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
       <div className="px-10">
-        <span className="font-inter text-[#282828] text-[70px] ">
+        <span
+          className={clsx(
+            "font-inter  text-[70px] ",
+            darkmode ? "text-custom" : "text-[#282828]"
+          )}
+        >
           Check out more projects
         </span>
       </div>

@@ -1,58 +1,90 @@
-// const FooterLinks = ({
-//   title,
-//   links,
-// }: {
-//   title: string;
-//   links: Array<{ title: string; link: string }>;
-// }) => (
-//   <div className="flex flex-col gap-y-3">
-//     <span className="text-white font-medium text-[16px]">{title}</span>
-//     <ul className="flex flex-col gap-y-3">
-//       {links.map((item) => (
-//         <Link to={item.link} className="text-sm font-normal text-[#9B9B9B]">
-//           {item.title}
-//         </Link>
-//       ))}
-//     </ul>
-//   </div>
+import { useSelector } from "react-redux";
+import {
+  IMOH_FOOTER,
+  LIGHT_MODE_FOOTER_LOGO,
+  SPARK_LABS_FOOTER_LOGO,
+} from "../assets";
+import { selectDarkMode } from "../state/slices/globalReducer";
+import clsx from "clsx";
+import { motion } from "framer-motion";
+import { animationVariants } from "../constant";
 
-import { LOGO_NAME } from "../assets";
-
-// );
 function Footer() {
+  const darkmode = useSelector(selectDarkMode);
   return (
-    <div className="w-full h-full p-10">
-      <div className="p-10">
-        <img src={LOGO_NAME} className="w-full object-contain h-full" alt="" />
-      </div>
+    <motion.div
+      className="w-full h-full p-10"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={animationVariants.footerContainer}
+    >
+      {/* Logo */}
+      <motion.div variants={animationVariants.fadeUp} className="p-10">
+        <img
+          src={IMOH_FOOTER}
+          className="w-full object-contain h-full"
+          alt=""
+        />
+      </motion.div>
+
+      {/* Footer Text Columns */}
       <div className="w-full flex items-start justify-between">
-        <span className="text-sm font-normal font-inter text-custom-black">
+        <motion.span
+          variants={animationVariants.fadeUp}
+          className={clsx(
+            "text-sm font-normal font-inter ",
+            darkmode ? "text-custom" : "text-custom-black"
+          )}
+        >
           ®Rights reserved, {new Date().getFullYear()} © hsparklabs.design
-        </span>
-        <div className="flex flex-col gap-y-2.5">
-          <span className="text-sm font-inter text-custom-black">
-            Models & Solutions, Pricing
-          </span>
-          <span className="text-sm font-inter text-custom-black">
-            Contact us
-          </span>
-          <span className="text-sm font-inter text-custom-black">
-            Book a call
-          </span>
-          <span className="text-sm font-inter text-custom-black">
-            hello@sparklabs.design
-          </span>
-        </div>
-        <div className="flex flex-col gap-y-2.5">
-          <span className="text-sm font-inter text-custom-black">
+        </motion.span>
+
+        <motion.div
+          variants={animationVariants.fadeUp}
+          className="flex flex-col gap-y-2.5"
+        >
+          {[
+            "Models & Solutions, Pricing",
+            "Contact us",
+            "Book a call",
+            "hello@sparklabs.design",
+          ].map((text, idx) => (
+            <span
+              key={idx}
+              className={clsx(
+                "text-sm font-normal font-inter ",
+                darkmode ? "text-custom" : "text-custom-black"
+              )}
+            >
+              {text}
+            </span>
+          ))}
+        </motion.div>
+
+        <motion.div
+          variants={animationVariants.fadeUp}
+          className="flex flex-col gap-y-2.5"
+        >
+          <span
+            className={clsx(
+              "text-sm font-normal font-inter ",
+              darkmode ? "text-custom" : "text-custom-black"
+            )}
+          >
             Kleine-Gartmanplantsoen 21, <br /> 1017 RP, Amsterdam
           </span>
-          <span className="text-sm font-inter text-custom-black">
+          <span
+            className={clsx(
+              "text-sm font-normal font-inter ",
+              darkmode ? "text-custom" : "text-custom-black"
+            )}
+          >
             Privacy Policy
           </span>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

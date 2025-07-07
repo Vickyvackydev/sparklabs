@@ -3,11 +3,16 @@ import { Link } from "react-router-dom";
 import Button from "./button";
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "../hooks";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaSun, FaTimes } from "react-icons/fa";
 import { Transition } from "@headlessui/react";
 import { DARK_MODE_ICON, IMOH } from "../assets";
+import { useDispatch, useSelector } from "react-redux";
+import { selectDarkMode, setDarkMode } from "../state/slices/globalReducer";
+import clsx from "clsx";
 function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const darkmode = useSelector(selectDarkMode);
+  const dispatch = useDispatch();
   const mobile = useMediaQuery("(max-width: 640px)");
   const [open, setOpen] = useState(false);
   useEffect(() => {
@@ -29,6 +34,7 @@ function Header() {
       elem.scrollIntoView({ behavior: "smooth" });
     }
   };
+
   return (
     <>
       {mobile ? (
@@ -105,8 +111,18 @@ function Header() {
           </Transition>
         </div>
       ) : (
-        <div className="w-full px-10 py-5 font-inter  flex items-center justify-between border-b border-[#D0D0D0]">
+        <div
+          className={clsx(
+            "w-full px-10 py-5 font-inter  flex items-center justify-between border-b border-[#D0D0D0]",
+            darkmode && "border-none"
+          )}
+        >
           <Link to={"/"}>
+            {/* {darkmode ? (
+              <img src={IMOH} className="w-[170px] h-[39px]" alt="" />
+              ) : (
+                <img src={SPARK_LABS} className="w-[170px] h-[39px]" alt="" />
+                )} */}
             <img src={IMOH} className="w-[170px] h-[39px]" alt="" />
           </Link>
           <div className="w-fit text-xs  px-2 py-1 rounded-lg text-[#D7D7D7] font-normal flex items-center gap-x-3.5 bg-[#38383B]">
@@ -115,16 +131,46 @@ function Header() {
             </Link>
             <Link to={"/models"}>Models, Pricing & Solutions</Link>
             <Link to={"/contact"}>Contact us</Link>
-            <Link to={""} className="border border-white p-2 rounded-lg">
+            <Link
+              to={""}
+              className={clsx(
+                "border  p-2 rounded-lg",
+                darkmode ? "border-gray-600" : "border-white"
+              )}
+            >
               Book a call
             </Link>
           </div>
           <div className="flex  items-center gap-x-4">
-            <img src={DARK_MODE_ICON} className="w-[20px] h-[20px]" alt="" />
-            <span className="text-sm font-normal  text-[#0E0E0E] underline">
+            {darkmode ? (
+              <FaSun
+                className="text-white cursor-pointer"
+                size={20}
+                onClick={() => dispatch(setDarkMode(false))}
+              />
+            ) : (
+              <img
+                src={DARK_MODE_ICON}
+                onClick={() => dispatch(setDarkMode(true))}
+                className="w-[20px] cursor-pointer h-[20px]"
+                alt=""
+              />
+            )}
+
+            <span
+              className={clsx(
+                "text-sm font-normal   underline",
+                darkmode ? "text-custom" : "text-[#0E0E0E]"
+              )}
+            >
               hello@sparklabs.design
             </span>
-            <span className="text-sm font-normal text-[#0E0E0E] underline">
+            <span
+              className={clsx(
+                "text-sm font-normal   underline",
+                darkmode ? "text-custom" : "text-[#0E0E0E]"
+              )}
+            >
               Contact us
             </span>
           </div>
