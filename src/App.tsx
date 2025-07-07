@@ -18,19 +18,19 @@ function App() {
 
   useEffect(() => {
     if (pathname === "/") {
-      document.title = "Spark Labs | Home";
+      document.title = "Imoh | Home";
     } else if (pathname === "/metta") {
-      document.title = "Spark Labs | Metta";
+      document.title = "Imoh | Metta";
     } else if (pathname === "/unveil") {
-      document.title = "Spark Labs | Unveil";
+      document.title = "Imoh | Unveil";
     } else if (pathname === "/10x-community") {
-      document.title = "Spark Labs | 10x Community";
+      document.title = "Imoh | 10x Community";
     } else if (pathname === "/wurlet") {
-      document.title = "Spark Labs | Wurlet";
+      document.title = "Imoh | Wurlet";
     } else if (pathname === "/models") {
-      document.title = "Spark Labs | Models";
+      document.title = "Imoh | Models";
     } else if (pathname === "/contact") {
-      document.title = "Spark Labs | Contact";
+      document.title = "Imoh | Contact";
     }
   }, [pathname]);
   // useEffect(() => {
