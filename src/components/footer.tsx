@@ -1,9 +1,5 @@
 import { useSelector } from "react-redux";
-import {
-  IMOH_FOOTER,
-  LIGHT_MODE_FOOTER_LOGO,
-  SPARK_LABS_FOOTER_LOGO,
-} from "../assets";
+import { IMOH_FOOTER } from "../assets";
 import { selectDarkMode } from "../state/slices/globalReducer";
 import clsx from "clsx";
 import { motion } from "framer-motion";
