@@ -1,35 +1,41 @@
-import { FRAME } from "../assets";
+import { CHAINDUSTRY, CNDM, FRAME } from "../assets";
 
 export const comingSoon = [
   {
     label: "Profitaitech",
-    status: "Coming soon",
+    status: "Coming Soon",
     img: FRAME,
+    link: "https://profitaitech.com/",
   },
   {
     label: "chaindustry",
-    status: "Coming soon",
-    img: FRAME,
+    status: "Live Site",
+    img: CHAINDUSTRY,
+    link: "https://www.chaindustry.io/",
   },
   {
-    label: "Norm",
-    status: "Staging Environment",
+    label: "Made with Norm",
+    status: "Live Site",
     img: FRAME,
+    link: "https://www.madewithnorm.xyz/",
   },
   {
-    label: "Greed Academy",
+    label: "CNDM",
     status: "Project  Contribution",
-    img: FRAME,
+    img: CNDM,
+    link: "https://cnbm.io",
   },
   {
     label: "Lemon Agency",
     status: "Coming soon",
     img: FRAME,
+    link: "",
   },
   {
-    label: "Chatterbot",
-    status: "Coming soon",
+    label: "Cheetahbots",
+    status: "Live Site",
     img: FRAME,
+    link: "https://cheetahbots.tech/",
   },
 ];
 

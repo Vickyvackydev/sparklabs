@@ -1,23 +1,17 @@
-import clsx from "clsx";
-import { HOME_LAST_FRAME } from "../assets";
 import ComingSoon from "../ui/comingSoon";
 import Hero from "../ui/hero";
 import More from "../ui/more";
 import Work from "../ui/work";
-import { useSelector } from "react-redux";
-import { selectDarkMode } from "../state/slices/globalReducer";
-import { motion } from "framer-motion";
-import { animationVariants } from "../constant";
 
 function Home() {
-  const darkmode = useSelector(selectDarkMode);
+  // const darkmode = useSelector(selectDarkMode);
 
   return (
     <>
       <Hero />
       <Work />
       <ComingSoon />
-      <motion.div
+      {/* <motion.div
         variants={animationVariants.container}
         className="flex font-inter p-10 gap-x-5 items-start justify-between"
       >
@@ -116,7 +110,7 @@ function Home() {
             pages all at once.
           </p>
         </motion.div>
-      </motion.div>
+      </motion.div> */}
       <More />
     </>
   );

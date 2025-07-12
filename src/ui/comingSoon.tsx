@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 function ComingSoon() {
   const [selectedSection, setSelectedSection] = useState(0);
   const darkmode = useSelector(selectDarkMode);
+
   return (
     <div className="p-10 w-full flex flex-col gap-y-7">
       {comingSoon.map((item, index, arr) => (
@@ -16,9 +17,10 @@ function ComingSoon() {
           onMouseEnter={() => setSelectedSection(index)}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
+          onClick={() => window.open(item.link, "_blank")}
           transition={{ duration: 0.3, delay: index * 0.1 }}
           className={clsx(
-            "w-full grid grid-cols-2 items-center border-b p-3 justify-between relative",
+            "w-full grid grid-cols-2 cursor-pointer items-center border-b p-3 justify-between relative",
             darkmode ? "border-white" : "border-[#252525]"
           )}
         >
@@ -48,7 +50,7 @@ function ComingSoon() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
                 src={item.img}
-                className="absolute w-[200px] h-[200px]"
+                className="absolute w-[200px] h-[200px] object-contain lg:block hidden"
                 style={{ right: `${index * arr.length}px` }}
                 alt=""
               />

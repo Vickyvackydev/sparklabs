@@ -9,7 +9,7 @@ function AboutCommunity() {
   return (
     <motion.div
       variants={animationVariants.container}
-      className="px-10 py-20 flex items-start justify-between"
+      className="lg:px-10 px-5 py-20 flex lg:flex-row flex-col items-start justify-between"
     >
       <motion.div
         variants={animationVariants.fadeInUp}
@@ -41,7 +41,7 @@ function AboutCommunity() {
           <span> Expertise</span>
           <span>Design, Strategy & Web</span>
           <span>Credits</span>
-          <span className="underline">IAS - Branding & Direction</span>
+          <span className="underline"></span>
         </div>
         <span
           className={clsx(

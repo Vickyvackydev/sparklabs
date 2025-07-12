@@ -9,16 +9,24 @@ function WurletHero() {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start end", "end start"], // from when top of element hits bottom of viewport, to when bottom hits top
+    offset: ["start end", "center start"], // from when top hits bottom to when center hits top
   });
 
-  const scale = useSpring(useTransform(scrollYProgress, [0, 1], [1, 1.1]), {
+  const scale = useSpring(
+    useTransform(scrollYProgress, [0, 1], [1, 1.3]), // zoom in more
+    {
+      stiffness: 100,
+      damping: 20,
+    }
+  );
+
+  const opacity = useSpring(useTransform(scrollYProgress, [0, 1], [1, 0.5]), {
     stiffness: 100,
     damping: 20,
   });
 
   return (
-    <div className="p-10" ref={sectionRef}>
+    <div className="lg:p-10 p-5 w-full" ref={sectionRef}>
       <div
         className={clsx(
           "flex items-center justify-between w-full",
@@ -36,7 +44,7 @@ function WurletHero() {
           src={WURLET}
           alt=""
           className="w-full h-full object-cover"
-          style={{ scale }}
+          style={{ scale, opacity }}
         />
       </div>
     </div>

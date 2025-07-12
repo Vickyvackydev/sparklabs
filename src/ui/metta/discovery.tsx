@@ -115,7 +115,7 @@ function Discovery() {
     //   </div>
     // </div>
     <motion.div
-      className="p-10 flex items-center flex-col justify-center"
+      className="lg:p-10 p-5 flex items-center flex-col justify-center"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
@@ -124,7 +124,7 @@ function Discovery() {
       <motion.span
         variants={fadeUp}
         className={clsx(
-          "font-anton text-5xl",
+          "font-anton text-5xl text-center",
           darkmode ? "text-white" : "text-custom-black"
         )}
       >
@@ -135,7 +135,7 @@ function Discovery() {
       </motion.span>
 
       {/* First Pair: Image Left, Text Right */}
-      <div className="flex items-center justify-between gap-x-4 mt-14">
+      <div className="flex items-center lg:flex-row flex-col justify-between gap-4 mt-14">
         <motion.div
           variants={leftToRight}
           className="bg-[#C8C8C875] p-10 rounded-xl"
@@ -145,7 +145,7 @@ function Discovery() {
 
         <motion.div
           variants={rightToLeft}
-          className="bg-black-bgrd p-8 rounded-xl flex w-[700px] flex-col gap-y-6 font-inter"
+          className="bg-black-bgrd p-8 rounded-xl flex lg:w-[700px] w-full flex-col gap-y-6 font-inter"
         >
           <span className="text-[#8D8D8D] font-semibold text-xl">
             Laying the Emotional & Visual Groundwork
@@ -183,10 +183,10 @@ function Discovery() {
       </div>
 
       {/* Second Pair: Text Left, Image Right */}
-      <div className="flex items-center justify-between gap-x-4 mt-14">
+      <div className="flex items-center justify-between lg:flex-row flex-col gap-x-4 mt-14">
         <motion.div
           variants={leftToRight}
-          className="bg-black-bgrd p-8 rounded-xl flex w-[700px] flex-col gap-y-6 font-inter"
+          className="bg-black-bgrd p-8 rounded-xl flex lg:w-[700px] w-full flex-col gap-y-6 font-inter"
         >
           <span className="text-[#8D8D8D] font-semibold text-xl">
             Typography & Design System

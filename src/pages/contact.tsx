@@ -40,23 +40,25 @@ function Contact() {
           variants={fadeUp}
           custom={1}
           className={clsx(
-            "flex flex-col gap-y-10 w-[547px] font-inter font-medium text-2xl",
+            "flex flex-col gap-y-5 w-[547px] font-inter font-medium text-2xl",
             darkmode ? "text-custom" : "text-custom-black"
           )}
         >
           {[
-            `We started SparkLab.design to establish visual languages and build product and digital experiences, optimizing production with centralized design systems management, procedural workflows, and semi-automatic proprietary tools. Our methods promote a high-speed production environment and a steady decrease in costs per deliverable, while preserving exceptional content quality.`,
-            `Tell us about Challenge / Project / Company:`,
-            `hello@sparklabs.design\nBook a call`,
-            `Kleine-Gartmanplantsoen 21, 1017 RP, Amsterdam (Operating Worldwide)`,
-            `Alena, Managing Partner`,
-            `alena@Sparklabs.design\nLinkedIn`,
+            `I design and manage digital products that work — beautifully and efficiently. Through a blend of design systems, product strategy, and streamlined workflows, I help teams launch scalable platforms and ship faster without sacrificing quality. From user research to product launch, I focus on clarity, speed, and systems that reduce cost per deliverable while maintaining exceptional execution.`,
+            `Have a challenge, product idea, or team that needs momentum?`,
+            `Let’s build something that lasts.`,
+            `📧imoh.silas@gmail.com`,
+            `📍Based in Lagos Nigeria, Operating Worldwide`,
+
+            // `Alena, Managing Partner`,
+            // `alena@Sparklabs.design\nLinkedIn`,
           ].map((text, index) => (
             <motion.span
               key={index}
               variants={fadeUp}
               custom={index + 2}
-              className={clsx(index === 2 ? "text-[#00ED56]" : "")}
+              className={clsx(index === 3 ? "text-[#00ED56]" : "")}
             >
               {text.split("\n").map((line, i) => (
                 <React.Fragment key={i}>
@@ -66,6 +68,30 @@ function Contact() {
               ))}
             </motion.span>
           ))}
+          <motion.span
+            className="cursor-pointer hover:underline"
+            onClick={() =>
+              window.open(
+                "https://www.linkedin.com/in/imoh-silas-7185a712b/",
+                "_blank"
+              )
+            }
+            variants={fadeUp}
+          >
+            🔗 Linkedin
+          </motion.span>
+          <motion.span
+            className="cursor-pointer hover:underline"
+            onClick={() =>
+              window.open(
+                "http://calendly.com/imoh-silas/15min?back=1&month=2024-09",
+                "_blank"
+              )
+            }
+            variants={fadeUp}
+          >
+            📞 Book a call
+          </motion.span>
         </motion.div>
       </motion.div>
       <More />

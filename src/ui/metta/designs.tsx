@@ -20,18 +20,18 @@ function Designs() {
     <>
       <motion.div
         variants={animationVariants.container}
-        className="flex items-center justify-center flex-col py-20 px-10"
+        className="flex items-center justify-center flex-col py-20 lg:px-10 px-5"
       >
         <motion.div
           variants={animationVariants.fadeInUp}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.4 }}
-          className="pb-10 flex flex-col gap-y-5 items-start w-[600px] justify-center"
+          className="pb-10 flex flex-col gap-y-5 items-start lg:w-[600px] w-full justify-center"
         >
           <span
             className={clsx(
-              "font-anton text-5xl ",
+              "font-anton text-5xl text-center ",
               darkmode ? "text-white" : "text-[#262626]"
             )}
           >
@@ -78,16 +78,16 @@ function Designs() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.4 }}
-          className="flex items-center justify-between gap-x-4 mt-14"
+          className="flex items-center justify-between lg:flex-row flex-col gap-4 mt-14"
         >
-          <div className="bg-[#C8C8C875] p-10 rounded-xl">
+          <div className="bg-[#C8C8C875] lg:p-10 p-5 rounded-xl">
             <img
               src={FRAME_4}
               className="w-full h-full object-contain"
               alt=""
             />
           </div>
-          <div className="bg-black-bgrd px-8 py-[6.75rem] rounded-xl flex w-[700px] flex-col gap-y-10 font-inter">
+          <div className="bg-black-bgrd lg:px-8 px-5 lg:py-[6.75rem] py-4 rounded-xl flex lg:w-[700px] w-full flex-col gap-y-10 font-inter">
             <span className="text-[#8D8D8D] font-semibold text-xl">
               Laying the Emotional & Visual Groundwork
             </span>
@@ -111,9 +111,9 @@ function Designs() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.4 }}
-          className="flex items-center justify-between gap-x-4 mt-14"
+          className="flex items-center justify-between gap-4 lg:flex-row flex-col mt-14"
         >
-          <div className="bg-[#C8C8C875] p-10 rounded-xl flex flex-col gap-y-5">
+          <div className="bg-[#C8C8C875] lg:p-10 p-5 rounded-xl flex flex-col gap-y-5">
             <span className="text-[16px] font-semibold text-[#8D8D8D]">
               X Design{" "}
             </span>
@@ -123,7 +123,7 @@ function Designs() {
               alt=""
             />
           </div>
-          <div className="bg-[#C8C8C875] p-10 rounded-xl flex flex-col gap-y-5">
+          <div className="bg-[#C8C8C875] lg:p-10 p-5 rounded-xl flex flex-col gap-y-5">
             <span className="text-[16px] font-semibold text-[#8D8D8D]">
               Asset Design{" "}
             </span>
@@ -139,7 +139,7 @@ function Designs() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.4 }}
-          className="py-16 flex flex-col gap-y-5 items-start w-[600px] justify-center"
+          className="py-16 flex flex-col gap-y-5 items-start lg:w-[600px] w-full justify-center"
         >
           <span
             className={clsx(
@@ -180,9 +180,9 @@ function Designs() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.4 }}
-          className="flex items-center justify-between gap-x-4 mt-14"
+          className="flex items-center justify-between lg:flex-row flex-col gap-4 mt-14"
         >
-          <div className="bg-[#C8C8C875] p-10 rounded-xl flex flex-col gap-y-5">
+          <div className="bg-[#C8C8C875] lg:p-10 p-5 rounded-xl flex flex-col gap-y-5">
             <span className="text-[16px] font-semibold text-[#8D8D8D]">
               Option 1 Landing Page
             </span>
@@ -192,7 +192,7 @@ function Designs() {
               alt=""
             />
           </div>
-          <div className="bg-[#C8C8C875] p-10 rounded-xl flex flex-col gap-y-5">
+          <div className="bg-[#C8C8C875] lg:p-10 p-5 rounded-xl flex flex-col gap-y-5">
             <span className="text-[16px] font-semibold text-[#8D8D8D]">
               Option 2 Landing Page
             </span>
@@ -208,16 +208,16 @@ function Designs() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.4 }}
-          className="flex items-center justify-between gap-x-4 mt-14"
+          className="flex items-center justify-between lg:flex-row flex-col gap-4 mt-14"
         >
-          <div className="bg-[#C8C8C875] p-10 rounded-xl flex flex-col gap-y-5">
+          <div className="bg-[#C8C8C875] lg:p-10 p-5 rounded-xl flex flex-col gap-y-5">
             <img
               src={FRAME_9}
               className="w-full h-full object-contain"
               alt=""
             />
           </div>
-          <div className="bg-[#C8C8C875] p-10 rounded-xl flex flex-col gap-y-5">
+          <div className="bg-[#C8C8C875] lg:p-10 p-5  rounded-xl flex flex-col gap-y-5">
             <img
               src={LAST_FRAME}
               className="w-full h-full object-contain"
@@ -226,10 +226,10 @@ function Designs() {
           </div>
         </motion.div>
       </motion.div>
-      <div className="px-10">
+      <div className="lg:px-10 px-5 pb-4">
         <span
           className={clsx(
-            "font-inter  text-[70px] ",
+            "font-inter  lg:text-[70px] text-[35px] lg:leading-0 leading-[40px]",
             darkmode ? "text-custom" : "text-[#282828]"
           )}
         >

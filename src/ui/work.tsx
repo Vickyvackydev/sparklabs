@@ -24,7 +24,7 @@ function Work() {
     <motion.div
       variants={animationVariants.container}
       id="projects"
-      className="w-full items-start mt-8 flex flex-col gap-y-10 px-10"
+      className="w-full items-start mt-8 flex flex-col gap-y-10 lg:px-10 px-5"
     >
       <motion.div
         variants={animationVariants.fadeInUp}
@@ -43,7 +43,7 @@ function Work() {
         </span>
         <span
           className={clsx(
-            " font-medium text-lg leading-[25px]",
+            " font-medium lg:text-lg text-sm lg:leading-[25px] leading-[20px]",
             darkmode ? "text-custom" : "text-[#6B6B6B]"
           )}
         >
@@ -56,7 +56,7 @@ function Work() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.4 }}
-        className="flex items-center justify-between gap-x-5"
+        className="flex items-center lg:flex-row flex-col justify-between gap-5"
       >
         <div className="w-full h-full ">
           <img
@@ -68,11 +68,16 @@ function Work() {
             <span className="text-[80px] mt-3.5 font-anton text-[#D3E1FF]">
               CRYPTORY
             </span>
-            <div className="w-full flex items-center justify-between border border-[#11111129] rounded-xl p-3">
+            <div
+              onClick={() =>
+                window.open("https://cryptorytest.netlify.app/", "_blank")
+              }
+              className="w-full cursor-pointer flex items-center justify-between border border-[#11111129] rounded-xl p-3"
+            >
               <div className="flex items-start gap-x-2">
                 <div className="flex flex-col">
                   <span className="text-[13.13px] font-medium text-black font-inter">
-                    Book a call
+                    Visit Site
                   </span>
                   <span className="text-xs font-normal text-custom-black font-inter">
                     Choose your time slot
@@ -121,14 +126,14 @@ function Work() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.4 }}
-        className="w-full h-full flex rounded-xl -mt-5"
+        className="w-full h-full flex lg:flex-row flex-col rounded-xl -mt-5"
       >
         <img
           src={HAND_PHONE}
-          className="w-[680px] h-full object-contain rounded-tl-xl rounded-bl-xl"
+          className="w-[680px] h-full object-contain rounded-tl-xl lg:rounded-tr-none rounded-tr-xl lg:rounded-bl-xl "
           alt=""
         />
-        <div className="w-full h-full bg-[#CDCDD1] p-5 rounded-tr-xl rounded-br-xl">
+        <div className="w-full h-full bg-[#CDCDD1] p-5 lg:rounded-tr-xl rounded-tr-none rounded-br-xl lg:rounded-bl-none rounded-bl-xl">
           <div className="flex flex-col gap-y-1.5 mt-4 items-start">
             <span className="font-inter text-xs">
               Investment and Financial service
@@ -168,9 +173,9 @@ function Work() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.4 }}
-        className="w-full h-full flex rounded-xl -mt-5"
+        className="w-full h-full flex lg:flex-row flex-col rounded-xl -mt-5"
       >
-        <div className="w-full h-full bg-[#CDCDD1] p-5 rounded-tl-xl rounded-bl-xl">
+        <div className="w-full h-full bg-[#CDCDD1] p-5 rounded-tl-xl rounded-tr-xl lg:rounded-tr-none lg:rounded-bl-xl rounded-bl-none">
           <div className="flex flex-col gap-y-1.5 mt-4 items-start">
             <span className="font-inter text-xs">
               Investment and Financial service
@@ -179,7 +184,7 @@ function Work() {
               UNVEILS
             </span>
           </div>
-          <div className="flex items-center gap-x-5 mt-[22.7rem]">
+          <div className="flex items-center lg:flex-row flex-col  gap-5 lg:mt-[22.7rem] mt-[15rem]">
             <div className="w-full flex items-center justify-between border border-[#11111129] rounded-xl p-3">
               <div className="flex items-start gap-x-2">
                 <div className="flex flex-col">
@@ -221,7 +226,7 @@ function Work() {
         </div>
         <img
           src={UNVEILS}
-          className="w-[645px] h-full object-contain rounded-tr-xl rounded-br-xl"
+          className="w-[645px] h-full object-contain lg:rounded-tr-xl rounded-tr-none lg:rounded-br-none lg:rounded-bl-none rounded-bl-xl rounded-br-xl"
           alt=""
         />
       </motion.div>
@@ -230,14 +235,14 @@ function Work() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.4 }}
-        className="w-full h-full flex rounded-xl -mt-5"
+        className="w-full h-full flex lg:flex-row flex-col rounded-xl -mt-5"
       >
         <img
           src={HAND_TAB}
-          className="w-[645px] h-full object-contain rounded-tl-xl rounded-bl-xl"
+          className="w-[645px] h-full object-contain rounded-tl-xl lg:rounded-tr-none rounded-tr-xl lg:rounded-bl-xl"
           alt=""
         />
-        <div className="w-full h-full bg-[#38383B] p-5 rounded-tr-xl rounded-br-xl">
+        <div className="w-full h-full bg-[#38383B] p-5 lg:rounded-tr-xl rounded-tr-none rounded-br-xl lg:rounded-bl-none rounded-bl-xl">
           <div className="flex flex-col gap-y-1.5 mt-4 items-start">
             <span className="font-inter text-xs text-custom">
               Social Development Community
@@ -253,21 +258,24 @@ function Work() {
               generation tools unlock the scale of your operations and
               streamline content production.
             </span>
-            <div className="flex items-center gap-x-5">
-              <div className="w-full flex items-center justify-between border border-[#C8D3CC29] rounded-xl p-3">
+            <div className="flex items-center lg:flex-row flex-col  gap-5 ">
+              <div
+                onClick={() => window.open("https://10x.ng/")}
+                className="w-full flex cursor-pointer items-center justify-between border border-[#C8D3CC29] rounded-xl p-3"
+              >
                 <div className="flex items-start gap-x-2">
                   <div className="flex flex-col">
                     <span className="text-[13.13px] font-medium text-custom font-inter">
-                      Book a call
+                      Our Website
                     </span>
                     <span className="text-xs font-normal text-custom font-inter">
-                      Choose your time slot
+                      Visit our website
                     </span>
                   </div>
                 </div>
                 <button className="">
                   <img
-                    src={POINTER_WHITE}
+                    src={POINTER_DIVERT_CUSTOM}
                     className="w-[20px] h-[20px]"
                     alt=""
                   />
@@ -283,7 +291,7 @@ function Work() {
                       Read Case Studies
                     </span>
                     <span className="text-xs font-normal text-custom font-inter">
-                      Visit partner's website
+                      See more about us
                     </span>
                   </div>
                 </div>
@@ -304,9 +312,9 @@ function Work() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.4 }}
-        className="w-full h-full flex rounded-xl -mt-5"
+        className="w-full h-full flex lg:flex-row flex-col rounded-xl -mt-5"
       >
-        <div className="w-full h-full bg-[#CDCDD1] p-5 rounded-tl-xl rounded-bl-xl">
+        <div className="w-full h-full bg-[#CDCDD1] p-5 rounded-tl-xl rounded-tr-xl lg:rounded-tr-none lg:rounded-bl-xl rounded-bl-none">
           <div className="flex flex-col gap-y-1.5 mt-4 items-start">
             <span className="font-inter text-xs">
               Product Content Company (partnered)
@@ -315,7 +323,7 @@ function Work() {
               {"Profit AI".toUpperCase()}
             </span>
           </div>
-          <div className="flex items-center gap-x-5 mt-[22.7rem]">
+          <div className="flex items-center lg:flex-row flex-col  gap-5 lg:mt-[22.7rem] mt-[15rem]">
             <div className="w-full flex items-center justify-between border border-[#11111129] rounded-xl p-3">
               <div className="flex items-start gap-x-2">
                 <div className="flex flex-col">
@@ -335,10 +343,10 @@ function Work() {
               <div className="flex items-start gap-x-2">
                 <div className="flex flex-col">
                   <span className="text-[13.13px] font-medium text-black font-inter">
-                    Content at scale
+                    Partner's Website
                   </span>
                   <span className="text-xs font-normal text-custom-black font-inter">
-                    Visit partner's website
+                    Website under development
                   </span>
                 </div>
               </div>
@@ -354,7 +362,7 @@ function Work() {
         </div>
         <img
           src={ARTIFACT}
-          className="w-[645px] h-full object-contain rounded-tr-xl rounded-br-xl"
+          className="w-[645px] h-full object-contain  lg:rounded-tr-xl rounded-tr-none lg:rounded-br-none rounded-bl-xl lg:rounded-bl-none rounded-br-xl"
           alt=""
         />
       </motion.div>

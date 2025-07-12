@@ -1,40 +1,26 @@
 import clsx from "clsx";
-import { BRAND, CARTOON, NEON, POINTER_WHITE } from "../../assets";
+import { CARTOON, MOBILE_VIEW } from "../../assets";
 import { useSelector } from "react-redux";
 import { selectDarkMode } from "../../state/slices/globalReducer";
 import { motion } from "framer-motion";
 import { animationVariants } from "../../constant";
-const sectionFadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
-};
+import { useMediaQuery } from "../../hooks";
+import GlobalUi from "../globalui";
 
-const cardsStagger = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.2,
-    },
-  },
-};
 function LandingPage() {
   const darkmode = useSelector(selectDarkMode);
+  const isMobile = useMediaQuery("(max-width: 640px)");
   return (
     <motion.div
       variants={animationVariants.container}
-      className="flex items-center justify-center flex-col px-10"
+      className="flex items-center justify-center flex-col lg:px-10 px-5 w-full"
     >
       <motion.div
         variants={animationVariants.fadeInUp}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.4 }}
-        className="pb-10 flex px-10 flex-col gap-y-5 items-center w-[800px] justify-center"
+        className="pb-10 flex lg:px-10 px-5 flex-col gap-y-5 items-center lg:w-[800px] w-full justify-center"
       >
         <span
           className={clsx(
@@ -76,42 +62,36 @@ function LandingPage() {
         viewport={{ once: true, amount: 0.4 }}
         className="w-full h-full"
       >
-        <img src={CARTOON} className="w-full h-full object-contain" alt="" />
+        <img
+          src={isMobile ? MOBILE_VIEW : CARTOON}
+          className="w-full h-full object-contain rounded-xl"
+          alt=""
+        />
       </motion.div>
       <motion.div
-        className="mt-20 p-10"
+        variants={animationVariants.fadeInUp}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={cardsStagger}
+        className="w-full mt-10"
+        viewport={{ once: true, amount: 0.4 }}
       >
-        {/* Heading */}
-        <motion.span
-          variants={sectionFadeUp}
+        <span
           className={clsx(
-            "font-inter text-[#282828] text-[70px]",
+            "font-inter text-[#282828] lg:text-[70px] text-[35px] leading-[40px]",
             darkmode && "text-custom"
           )}
         >
           Check out more projects
-        </motion.span>
-
-        {/* Cards */}
-        <div className="flex items-center justify-between gap-x-5 mt-10">
-          {/* First Card */}
-          <motion.div
-            variants={sectionFadeUp}
-            whileHover={{ scale: 1.03 }}
-            transition={{ type: "spring", stiffness: 180 }}
-            className="w-full h-full rounded-xl overflow-hidden"
-          >
+        </span>
+        {/* <div className="flex items-center justify-between w-full mt-6 gap-5 lg:flex-row flex-col">
+          <div className="w-full h-full ">
             <img
               src={NEON}
-              className="w-full h-full object-contain rounded-t-xl"
+              className="w-full h-full object-contain  rounded-t-xl"
               alt=""
             />
             <div className="w-full p-5 bg-[#818CA3] rounded-b-xl">
-              <span className="text-[80px] mt-3.5 leading-20 font-anton text-[#D3E1FF]">
+              <span className="lg:text-[80px] text-[60px] mt-3.5 lg:leading-20 leading-[60px] font-anton text-[#D3E1FF]">
                 {"Marketing".toUpperCase()} <br />
                 {"content".toUpperCase()}
               </span>
@@ -135,22 +115,15 @@ function LandingPage() {
                 </button>
               </div>
             </div>
-          </motion.div>
-
-          {/* Second Card */}
-          <motion.div
-            variants={sectionFadeUp}
-            whileHover={{ scale: 1.03 }}
-            transition={{ type: "spring", stiffness: 180 }}
-            className="w-full h-full rounded-xl overflow-hidden"
-          >
+          </div>
+          <div className="w-full h-full scale-[98%]">
             <img
               src={BRAND}
-              className="w-[600px] h-full object-contain rounded-t-xl"
+              className=" w-full h-full object-contain rounded-t-xl"
               alt=""
             />
             <div className="w-full p-5 bg-[#0042E5] rounded-b-xl">
-              <span className="text-[80px] font-anton leading-20 text-[#D3E1FF]">
+              <span className="lg:text-[80px] text-[60px]  font-anton lg:leading-20 leading-[60px] text-[#D3E1FF]">
                 {"Brand".toUpperCase()} <br />
                 {"systems".toUpperCase()}
               </span>
@@ -174,8 +147,9 @@ function LandingPage() {
                 </button>
               </div>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </div> */}
+        <GlobalUi />
       </motion.div>
     </motion.div>
   );

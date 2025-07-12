@@ -1,9 +1,5 @@
 import { useSelector } from "react-redux";
 import {
-  BRAND,
-  NEON,
-  POINTER,
-  POINTER_WHITE,
   WURLET_FRAME_1,
   WURLET_FRAME_10,
   WURLET_FRAME_11,
@@ -20,6 +16,7 @@ import { selectDarkMode } from "../../state/slices/globalReducer";
 import clsx from "clsx";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef } from "react";
+import GlobalUi from "../globalui";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -49,25 +46,6 @@ const itemFadeUp = {
   },
 };
 
-const sectionFadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
-};
-
-const cardsStagger = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.2,
-    },
-  },
-};
-
 function WurletDesigns() {
   const darkmode = useSelector(selectDarkMode);
   const zoomRef = useRef(null);
@@ -80,9 +58,9 @@ function WurletDesigns() {
     damping: 20,
   });
   return (
-    <div className="flex items-center justify-center flex-col">
+    <div className="flex items-center justify-center flex-col w-full">
       <motion.div
-        className="py-16 flex flex-col gap-y-5 items-center w-[700px] justify-center"
+        className="py-16 flex flex-col p-5 gap-y-5 items-center lg:w-[700px] w-full justify-center"
         variants={fadeUp}
         initial="hidden"
         whileInView="show"
@@ -104,7 +82,7 @@ function WurletDesigns() {
         </span>
         <span
           className={clsx(
-            "text-sm font-medium font-inter text-[#808080]",
+            "text-sm font-medium text-center font-inter text-[#808080]",
             darkmode && "text-white"
           )}
         >
@@ -117,7 +95,7 @@ function WurletDesigns() {
         </span>
       </motion.div>
       <motion.div
-        className="mt-10 grid grid-cols-2 gap-3.5 w-full p-10"
+        className="lg:mt-10 mt-5 grid lg:grid-cols-2 grid-cols-1 gap-3.5 w-full lg:p-10 p-5"
         variants={gridStagger}
         initial="hidden"
         whileInView="show"
@@ -148,7 +126,7 @@ function WurletDesigns() {
       </motion.div>
 
       <motion.div
-        className="py-16 flex flex-col gap-y-5 items-center w-[650px] justify-center"
+        className="py-16 px-5 flex flex-col gap-y-5 items-center lg:w-[650px] w-full justify-center"
         variants={fadeUp}
         initial="hidden"
         whileInView="show"
@@ -169,7 +147,7 @@ function WurletDesigns() {
         </span>
         <span
           className={clsx(
-            "text-sm font-medium font-inter text-[#808080]",
+            "text-sm font-medium font-inter text-center text-[#808080]",
             darkmode && "text-white"
           )}
         >
@@ -180,16 +158,16 @@ function WurletDesigns() {
           design consistency across teams, platforms, and future campaigns.
         </span>
       </motion.div>
-      <div className="w-full h-full p-10" ref={zoomRef}>
+      <div className="w-full h-full lg:p-10 p-5 " ref={zoomRef}>
         <motion.img
           src={WURLET_FRAME_7}
-          className="w-full h-full object-contain"
+          className="w-full h-full object-contain overflow-hidden mb-20"
           style={{ scale: zoomScale }}
           alt=""
         />
 
         <motion.div
-          className="grid grid-cols-2 gap-3.5 w-full mt-5"
+          className="grid lg:grid-cols-2 grid-cols-1 gap-3.5 w-full mt-5"
           variants={gridStagger}
           initial="hidden"
           whileInView="show"
@@ -215,39 +193,29 @@ function WurletDesigns() {
       </div>
 
       <motion.div
-        className="mt-20 p-10"
+        variants={fadeUp}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={cardsStagger}
+        className="w-full p-5"
+        viewport={{ once: true, amount: 0.4 }}
       >
-        {/* Heading */}
-        <motion.span
-          variants={sectionFadeUp}
+        <span
           className={clsx(
-            "font-inter text-[#282828] text-[70px]",
+            "font-inter text-[#282828] lg:text-[70px] text-[35px] leading-[40px]",
             darkmode && "text-custom"
           )}
         >
           Check out more projects
-        </motion.span>
-
-        {/* Cards */}
-        <div className="flex items-center justify-between gap-x-5 mt-10">
-          {/* First Card */}
-          <motion.div
-            variants={sectionFadeUp}
-            whileHover={{ scale: 1.03 }}
-            transition={{ type: "spring", stiffness: 180 }}
-            className="w-full h-full rounded-xl overflow-hidden"
-          >
+        </span>
+        {/* <div className="flex items-center justify-between w-full mt-6 gap-5 lg:flex-row flex-col">
+          <div className="w-full h-full ">
             <img
               src={NEON}
-              className="w-full h-full object-contain rounded-t-xl"
+              className="w-full h-full object-contain  rounded-t-xl"
               alt=""
             />
             <div className="w-full p-5 bg-[#818CA3] rounded-b-xl">
-              <span className="text-[80px] mt-3.5 leading-20 font-anton text-[#D3E1FF]">
+              <span className="lg:text-[80px] text-[60px] mt-3.5 lg:leading-20 leading-[60px] font-anton text-[#D3E1FF]">
                 {"Marketing".toUpperCase()} <br />
                 {"content".toUpperCase()}
               </span>
@@ -263,26 +231,23 @@ function WurletDesigns() {
                   </div>
                 </div>
                 <button className="">
-                  <img src={POINTER} className="w-[20px] h-[20px]" alt="" />
+                  <img
+                    src={POINTER_WHITE}
+                    className="w-[20px] h-[20px]"
+                    alt=""
+                  />
                 </button>
               </div>
             </div>
-          </motion.div>
-
-          {/* Second Card */}
-          <motion.div
-            variants={sectionFadeUp}
-            whileHover={{ scale: 1.03 }}
-            transition={{ type: "spring", stiffness: 180 }}
-            className="w-full h-full rounded-xl overflow-hidden"
-          >
+          </div>
+          <div className="w-full h-full scale-[98%]">
             <img
               src={BRAND}
-              className="w-[600px] h-full object-contain rounded-t-xl"
+              className=" w-full h-full object-contain rounded-t-xl"
               alt=""
             />
             <div className="w-full p-5 bg-[#0042E5] rounded-b-xl">
-              <span className="text-[80px] font-anton leading-20 text-[#D3E1FF]">
+              <span className="lg:text-[80px] text-[60px]  font-anton lg:leading-20 leading-[60px] text-[#D3E1FF]">
                 {"Brand".toUpperCase()} <br />
                 {"systems".toUpperCase()}
               </span>
@@ -306,8 +271,9 @@ function WurletDesigns() {
                 </button>
               </div>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </div> */}
+        <GlobalUi />
       </motion.div>
     </div>
   );

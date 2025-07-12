@@ -51,14 +51,14 @@ function CommunityDesigns() {
   return (
     <motion.div
       variants={animationVariants.container}
-      className="flex items-center justify-center flex-col py-20"
+      className="flex items-center justify-center flex-col lg:py-20 py-10"
     >
       <motion.div
         variants={animationVariants.fadeInUp}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.4 }}
-        className="pb-10 flex px-10 flex-col gap-y-5 items-start w-[700px] justify-center"
+        className="pb-10 flex lg:px-10 px-5 flex-col gap-y-5 items-start lg:w-[700px] w-full justify-center"
       >
         <span
           className={clsx(
@@ -103,7 +103,7 @@ function CommunityDesigns() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.4 }}
-        className="flex items-center px-10 justify-between gap-x-4 mt-14"
+        className="flex items-center lg:px-10 px-5 justify-between gap-4 lg:flex-row flex-col mt-14"
       >
         <div className="bg-[#C8C8C875] p-5 rounded-xl flex flex-col gap-y-5">
           <img
@@ -126,7 +126,7 @@ function CommunityDesigns() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.4 }}
-        className="flex items-center px-10 justify-between gap-x-4 mt-14"
+        className="flex items-center lg:px-10 px-5 justify-between gap-4 lg:flex-row flex-col mt-14"
       >
         <div className="bg-[#C8C8C875] p-5 rounded-xl flex flex-col gap-y-5">
           <img
@@ -148,7 +148,7 @@ function CommunityDesigns() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.4 }}
-        className="pt-20 flex flex-col gap-y-5 items-start w-[700px] justify-center"
+        className="pt-20 flex flex-col gap-y-5 items-start px-5 lg:w-[700px] w-full justify-center"
       >
         <span
           className={clsx(

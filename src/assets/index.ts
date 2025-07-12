@@ -74,3 +74,8 @@ export { default as SPARK_LABS_FOOTER_LOGO } from "./images/spark-footer-logo.sv
 export { default as HOME_LAST_FRAME } from "./images/home-last-frame.png";
 export { default as LIGHT_LOGO } from "./images/light-logo.svg";
 export { default as LIGHT_MODE_FOOTER_LOGO } from "./images/light-mode-footer-logo.svg";
+export { default as CHAINDUSTRY } from "./images/chaindustry.jpg";
+export { default as CNDM } from "./images/cmdm.jpg";
+export { default as FOOTER_DARK_TEXT } from "./images/footer-dark-text.svg";
+export { default as HEADER_LOGO_TEXT } from "./images/logo-white.svg";
+export { default as MOBILE_VIEW } from "./images/mobile-view.png";

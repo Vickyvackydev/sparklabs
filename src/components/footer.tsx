@@ -1,10 +1,24 @@
 import { useSelector } from "react-redux";
-import { IMOH_FOOTER } from "../assets";
+import { FOOTER_DARK_TEXT, IMOH_FOOTER } from "../assets";
 import { selectDarkMode } from "../state/slices/globalReducer";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import { animationVariants } from "../constant";
 
+const links = [
+  {
+    label: "Let's Work Together",
+    link: "/contact",
+  },
+  {
+    label: "Book a call",
+    link: "http://calendly.com/imoh-silas/15min?back=1&month=2024-09",
+  },
+  {
+    label: "imoh.silas@gmail.com",
+    link: "",
+  },
+];
 function Footer() {
   const darkmode = useSelector(selectDarkMode);
   return (
@@ -16,16 +30,16 @@ function Footer() {
       variants={animationVariants.footerContainer}
     >
       {/* Logo */}
-      <motion.div variants={animationVariants.fadeUp} className="p-10">
+      <motion.div variants={animationVariants.fadeUp} className="lg:p-10 p-5">
         <img
-          src={IMOH_FOOTER}
+          src={darkmode ? FOOTER_DARK_TEXT : IMOH_FOOTER}
           className="w-full object-contain h-full"
           alt=""
         />
       </motion.div>
 
       {/* Footer Text Columns */}
-      <div className="w-full flex items-start justify-between">
+      <div className="w-full flex items-start lg:flex-row flex-col gap-y-6 justify-between">
         <motion.span
           variants={animationVariants.fadeUp}
           className={clsx(
@@ -33,27 +47,23 @@ function Footer() {
             darkmode ? "text-custom" : "text-custom-black"
           )}
         >
-          ®Rights reserved, {new Date().getFullYear()} © hsparklabs.design
+          ®Rights reserved, {new Date().getFullYear()} © Imoh Silas
         </motion.span>
 
         <motion.div
           variants={animationVariants.fadeUp}
           className="flex flex-col gap-y-2.5"
         >
-          {[
-            "Models & Solutions, Pricing",
-            "Contact us",
-            "Book a call",
-            "hello@sparklabs.design",
-          ].map((text, idx) => (
+          {links.map((text, idx) => (
             <span
               key={idx}
+              onClick={() => window.open(text.link)}
               className={clsx(
-                "text-sm font-normal font-inter ",
+                "text-sm font-normal font-inter cursor-pointer hover:underline",
                 darkmode ? "text-custom" : "text-custom-black"
               )}
             >
-              {text}
+              {text.label}
             </span>
           ))}
         </motion.div>
@@ -68,7 +78,7 @@ function Footer() {
               darkmode ? "text-custom" : "text-custom-black"
             )}
           >
-            Kleine-Gartmanplantsoen 21, <br /> 1017 RP, Amsterdam
+            Lagos, Nigeria
           </span>
           <span
             className={clsx(

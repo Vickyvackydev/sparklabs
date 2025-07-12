@@ -9,7 +9,7 @@ function AboutWurlet() {
   return (
     <motion.div
       variants={animationVariants.container}
-      className="px-10 py-20 flex items-start justify-between"
+      className="lg:px-10 px-5 lg:flex-row flex-col py-20 flex items-start justify-between"
     >
       <motion.div
         variants={animationVariants.fadeInUp}
@@ -43,7 +43,7 @@ function AboutWurlet() {
           <span> Expertise</span>
           <span>Design, Strategy & Web</span>
           <span>Credits</span>
-          <span className="underline">IAS - Branding & Direction</span>
+          <span className="underline"></span>
         </div>
         <span
           className={clsx(

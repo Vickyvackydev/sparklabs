@@ -1,8 +1,5 @@
 import clsx from "clsx";
 import {
-  BRAND,
-  NEON,
-  POINTER_WHITE,
   UNVEIL_1,
   UNVEIL_2,
   UNVEIL_3,
@@ -17,19 +14,20 @@ import { useSelector } from "react-redux";
 import { selectDarkMode } from "../../state/slices/globalReducer";
 import { motion } from "framer-motion";
 import { animationVariants } from "../../constant";
+import GlobalUi from "../globalui";
 function UnveilDesigns() {
   const darkmode = useSelector(selectDarkMode);
   return (
     <motion.div
       variants={animationVariants.container}
-      className="flex items-center justify-center flex-col py-20 px-10"
+      className="flex items-center justify-center flex-col py-20  lg:px-10 px-5"
     >
       <motion.div
         variants={animationVariants.fadeInUp}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.4 }}
-        className="pb-10 flex flex-col gap-y-5 items-start w-[600px] justify-center"
+        className="pb-10 flex flex-col gap-y-5 items-start lg:w-[600px] w-full justify-center"
       >
         <span
           className={clsx(
@@ -74,7 +72,7 @@ function UnveilDesigns() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.4 }}
-        className="flex items-center justify-between gap-x-4 mt-14"
+        className="flex items-center justify-between gap-4 lg:flex-row flex-col mt-14"
       >
         <div className="bg-[#C8C8C875] p-5 rounded-xl flex flex-col gap-y-5">
           <img src={UNVEIL_1} className="w-full h-full object-contain" alt="" />
@@ -88,7 +86,7 @@ function UnveilDesigns() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.4 }}
-        className="flex items-center justify-between gap-x-4 mt-14"
+        className="flex items-center justify-between gap-4 lg:flex-row flex-col mt-14"
       >
         <div className="bg-[#C8C8C875] p-5 rounded-xl flex flex-col gap-y-5">
           <img src={UNVEIL_3} className="w-full h-full object-contain" alt="" />
@@ -102,7 +100,7 @@ function UnveilDesigns() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.4 }}
-        className="flex items-center justify-between gap-x-4 mt-14"
+        className="flex items-center justify-between gap-4 lg:flex-row flex-col mt-14"
       >
         <div className="bg-[#C8C8C875] p-5 rounded-xl flex flex-col gap-y-5">
           <img src={UNVEIL_5} className="w-full h-full object-contain" alt="" />
@@ -116,7 +114,7 @@ function UnveilDesigns() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.4 }}
-        className="bg-[#C8C8C875] p-5 w-full h-full rounded-xl"
+        className="bg-[#C8C8C875] p-5 w-full h-full mt-5 rounded-xl"
       >
         <img src={UNVEIL_7} className="w-full h-full object-contain" alt="" />
       </motion.div>
@@ -125,7 +123,7 @@ function UnveilDesigns() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.4 }}
-        className="py-16 flex flex-col gap-y-5 items-start w-[600px] justify-center"
+        className="py-16 flex flex-col gap-y-5 items-start lg:w-[600px] w-full justify-center"
       >
         <span
           className={clsx(
@@ -164,7 +162,7 @@ function UnveilDesigns() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.4 }}
-        className="flex items-center justify-between gap-x-4 mt-14"
+        className="flex items-center justify-between gap-4 lg:flex-row flex-col mt-14"
       >
         <div className="bg-[#C8C8C875] p-5 rounded-xl flex flex-col gap-y-5">
           <img src={UNVEIL_9} className="w-full h-full object-contain" alt="" />
@@ -195,25 +193,26 @@ function UnveilDesigns() {
         variants={animationVariants.fadeInUp}
         initial="hidden"
         whileInView="show"
+        className="w-full"
         viewport={{ once: true, amount: 0.4 }}
       >
         <span
           className={clsx(
-            "font-inter text-[#282828] text-[70px]",
+            "font-inter text-[#282828] lg:text-[70px] text-[35px] leading-[40px]",
             darkmode && "text-custom"
           )}
         >
           Check out more projects
         </span>
-        <div className="flex items-center justify-between gap-x-5">
+        {/* <div className="flex items-center justify-between w-full mt-6 gap-5 lg:flex-row flex-col">
           <div className="w-full h-full ">
             <img
               src={NEON}
-              className="w-full h-full object-contain rounded-t-xl"
+              className="w-full h-full object-contain  rounded-t-xl"
               alt=""
             />
             <div className="w-full p-5 bg-[#818CA3] rounded-b-xl">
-              <span className="text-[80px] mt-3.5 leading-20 font-anton text-[#D3E1FF]">
+              <span className="lg:text-[80px] text-[60px] mt-3.5 lg:leading-20 leading-[60px] font-anton text-[#D3E1FF]">
                 {"Marketing".toUpperCase()} <br />
                 {"content".toUpperCase()}
               </span>
@@ -241,11 +240,11 @@ function UnveilDesigns() {
           <div className="w-full h-full scale-[98%]">
             <img
               src={BRAND}
-              className="w-[600px] h-full object-contain rounded-t-xl"
+              className=" w-full h-full object-contain rounded-t-xl"
               alt=""
             />
             <div className="w-full p-5 bg-[#0042E5] rounded-b-xl">
-              <span className="text-[80px]  font-anton leading-20 text-[#D3E1FF]">
+              <span className="lg:text-[80px] text-[60px]  font-anton lg:leading-20 leading-[60px] text-[#D3E1FF]">
                 {"Brand".toUpperCase()} <br />
                 {"systems".toUpperCase()}
               </span>
@@ -270,7 +269,8 @@ function UnveilDesigns() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
+        <GlobalUi />
       </motion.div>
     </motion.div>
   );

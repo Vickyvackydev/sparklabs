@@ -6,7 +6,7 @@ import Metta from "./pages/metta";
 import Unveil from "./pages/unveil";
 import Community from "./pages/community";
 import Wurlet from "./pages/wurlet";
-import Models from "./pages/models";
+
 import Contact from "./pages/contact";
 import { useEffect } from "react";
 import lenis from "./utils";
@@ -27,8 +27,6 @@ function App() {
       document.title = "Imoh | 10x Community";
     } else if (pathname === "/wurlet") {
       document.title = "Imoh | Wurlet";
-    } else if (pathname === "/models") {
-      document.title = "Imoh | Models";
     } else if (pathname === "/contact") {
       document.title = "Imoh | Contact";
     }
@@ -52,7 +50,7 @@ function App() {
           <Route path="/unveil" element={<Unveil />} />
           <Route path="/10x-community" element={<Community />} />
           <Route path="/wurlet" element={<Wurlet />} />
-          <Route path="/models" element={<Models />} />
+
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </Layout>
