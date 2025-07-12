@@ -167,7 +167,14 @@ function Hero() {
             Branding & Brand Design Systems, Product Design Systems, Digital
             Experiences, UX/UI, <br /> Images, Videos, Motion Graphics, and SFX.
           </span>
-          <div className="w-full flex items-center justify-between border border-[#11111129] rounded-xl p-3">
+          <div
+            onClick={() =>
+              window.open(
+                "http://calendly.com/imoh-silas/15min?back=1&month=2024-09"
+              )
+            }
+            className="w-full flex cursor-pointer items-center justify-between border border-[#11111129] rounded-xl p-3"
+          >
             <div className="flex items-start gap-x-2">
               <div className="flex flex-col">
                 <span className="text-[13.13px] font-medium text-anton-gray font-inter">
@@ -196,7 +203,14 @@ function Hero() {
             From vision to execution — I lead product discovery, define
             roadmaps, coordinate teams, <br /> and drive outcomes that matter.
           </span>
-          <div className="w-full flex items-center justify-between border border-[#C8D3CC29] rounded-xl p-3">
+          <div
+            onClick={() =>
+              window.open(
+                "http://calendly.com/imoh-silas/15min?back=1&month=2024-09"
+              )
+            }
+            className="w-full cursor-pointer flex items-center justify-between border border-[#C8D3CC29] rounded-xl p-3"
+          >
             <div className="flex items-start gap-x-2">
               <div className="flex flex-col">
                 <span className="text-[13.13px] font-medium text-custom font-inter">

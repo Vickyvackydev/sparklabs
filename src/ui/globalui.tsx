@@ -13,7 +13,7 @@ function GlobalUi() {
   };
 
   return (
-    <div className="flex items-center justify-between gap-x-5 mt-10">
+    <div className="flex items-center justify-between gap-5 mt-10 lg:flex-row flex-col">
       {/* First Card */}
       <motion.div
         variants={sectionFadeUp}
@@ -35,7 +35,7 @@ function GlobalUi() {
           }
           className="w-full p-5 bg-[#818CA3] cursor-pointer rounded-b-xl"
         >
-          <span className="text-[80px] mt-3.5 leading-20 font-anton text-[#D3E1FF]">
+          <span className="lg:text-[80px] text-[50px] mt-3.5 lg:leading-20 leading-[50px] font-anton text-[#D3E1FF]">
             {"products".toUpperCase()} <br />
             {"management".toUpperCase()}
           </span>
@@ -70,7 +70,7 @@ function GlobalUi() {
           alt=""
         />
         <div className="w-full p-5 bg-[#0042E5] rounded-b-xl">
-          <span className="text-[80px] font-anton leading-20 text-[#D3E1FF]">
+          <span className="lg:text-[80px] text-[55px] font-anton lg:leading-20 leading-[55px] text-[#D3E1FF]">
             {"Brand".toUpperCase()} <br />
             {"systems".toUpperCase()}
           </span>

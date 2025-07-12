@@ -1,8 +1,10 @@
 import { PICTURE_2, POINTER } from "../assets";
 import { motion } from "framer-motion";
 import { animationVariants } from "../constant";
+import { useNavigate } from "react-router-dom";
 
 function More() {
+  const navigate = useNavigate();
   return (
     <motion.div
       className="w-full bg-[#ECECEC] flex items-start justify-between gap-y-5 lg:px-10 py-10 px-5 lg:flex-row flex-col"
@@ -30,7 +32,17 @@ function More() {
             variants={animationVariants.cardFadeSlide}
             className="w-full flex items-center justify-between border border-[#1212125E] rounded-xl p-3"
           >
-            <div className="flex items-start gap-x-2">
+            <div
+              onClick={() => {
+                idx === 0
+                  ? navigate("/contact")
+                  : window.open(
+                      "https://calendly.com/imoh-silas/15min?back=1&month=2024-09",
+                      "_blank"
+                    );
+              }}
+              className="flex items-start gap-x-2 cursor-pointer"
+            >
               {idx === 0 && (
                 <img
                   src={PICTURE_2}

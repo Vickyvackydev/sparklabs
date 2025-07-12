@@ -21,14 +21,14 @@ function Contact() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="p-10 flex items-start justify-between"
+        className="lg:p-10 p-5 w-full flex items-start lg:flex-row flex-col justify-between"
       >
         {/* Left title */}
         <motion.span
           variants={fadeUp}
           custom={0}
           className={clsx(
-            "text-[80px] font-anton leading-20",
+            "lg:text-[80px] text-[60px] font-anton lg:leading-20 leading-[60px]",
             darkmode ? "text-custom" : "text-custom-black"
           )}
         >
@@ -40,7 +40,7 @@ function Contact() {
           variants={fadeUp}
           custom={1}
           className={clsx(
-            "flex flex-col gap-y-5 w-[547px] font-inter font-medium text-2xl",
+            "flex flex-col gap-y-5 lg:w-[547px] w-full lg:mt-0 mt-5 font-inter font-medium lg:text-2xl text-lg",
             darkmode ? "text-custom" : "text-custom-black"
           )}
         >
@@ -50,15 +50,12 @@ function Contact() {
             `Let’s build something that lasts.`,
             `📧imoh.silas@gmail.com`,
             `📍Based in Lagos Nigeria, Operating Worldwide`,
-
-            // `Alena, Managing Partner`,
-            // `alena@Sparklabs.design\nLinkedIn`,
           ].map((text, index) => (
             <motion.span
               key={index}
               variants={fadeUp}
               custom={index + 2}
-              className={clsx(index === 3 ? "text-[#00ED56]" : "")}
+              className={clsx(index === 2 ? "text-[#00ED56]" : "")}
             >
               {text.split("\n").map((line, i) => (
                 <React.Fragment key={i}>
@@ -94,6 +91,7 @@ function Contact() {
           </motion.span>
         </motion.div>
       </motion.div>
+
       <More />
     </>
   );
